@@ -10,37 +10,135 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // An array of all allergies entered by the user.
+    var allergies: NSMutableArray = NSMutableArray.alloc()
+    
+    // A string representation of the diet that the user selected.
+    var diet: String = ""
+    
+    // An array of cuisine preferences selected by the user.
+    var cuisines: NSMutableArray = NSMutableArray.alloc()
+    
     var window: UIWindow?
-
-
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /*
+        All application-specific and user data must be written to files that reside in the iOS device's
+        Documents directory. Nothing can be written into application's main bundle (project folder) because
+        it is locked for writing after your app is published.
+        
+        The contents of the iOS device's Documents directory are backed up by iTunes during backup of an iOS device.
+        Therefore, the user can recover the data written by your app from an earlier device backup.
+        
+        The Documents directory path on an iOS device is different from the one used for iOS Simulator.
+        
+        To obtain the Documents directory path, you use the NSSearchPathForDirectoriesInDomains function.
+        However, this function was created originally for Mac OS X, where multiple such directories could exist.
+        Therefore, it returns an array of paths rather than a single path.
+        
+        For iOS, the resulting array's first element (index=0) contains the path to the Documents directory.
+        */
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectoryPath = paths[0] as String
+        
+        let dietaryPreferencePlistFilePathInDocumentDirectory = documentDirectoryPath + "/DietaryPreference.plist"
+        let cuisinePreferencesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/CuisinePreferences.plist"
+        let foodAllergiesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/FoodAllergies.plist"
+        
+        // NSMutableDictionary manages an *unordered* collection of mutable (changeable) key-value pairs.
+        // Instantiate an NSMutableDictionary object and initialize it with the contents of the MyFavoriteMovies.plist file
+        var dietFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: dietaryPreferencePlistFilePathInDocumentDirectory)
+        
+        var cuisinesFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: cuisinePreferencesPlistFilePathInDocumentDirectory)
+        
+        var allergiesFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: foodAllergiesPlistFilePathInDocumentDirectory)
+        
+        /*
+        If the optional variable dictionaryFromFile has a value, then
+        MyFavoriteMovies.plist exists in the Document directory and the dictionary is successfully created
+        else read MyFavoriteMovies.plist from the application's main bundle.
+        */
+        if let arrayFromFileInDocumentDirectory = dietFromFile {
+            
+            // DietaryPreferences.plist exists in the Document directory
+            self.diet = arrayFromFileInDocumentDirectory[0] as String
+            
+        } else {
+            
+            // DietaryPreference.plist does not exist in the Document directory; Set the default diet String to be empty.
+            
+            self.diet = ""
+            
+        }
+        
+        if let arrayFromFileInDocumentDirectory = cuisinesFromFile {
+            
+            // CuisinePreferences.plist exists in the Document directory
+            self.cuisines = arrayFromFileInDocumentDirectory
+            
+            
+        } else {
+            
+            // CuisinePreferences.plist does not exist in the Document directory; Set the default cuisine array to be empty.
+            self.cuisines = NSMutableArray()
+            
+        }
+        
+        if let arrayFromFileInDocumentDirectory = allergiesFromFile {
+            
+            // FoodAllergies.plist exists in the Document Directory
+            self.allergies = arrayFromFileInDocumentDirectory
+            
+            
+        } else {
+            
+            // FoodAllergies.plist does not exist in the Document directory; set the default allergy array to be empty.
+            self.allergies = NSMutableArray()
+        }
+        
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        /*
+        "UIApplicationWillResignActiveNotification is posted when the app is no longer active and loses focus.
+        An app is active when it is receiving events. An active app can be said to have focus.
+        It gains focus after being launched, loses focus when an overlay window pops up or when the device is
+        locked, and gains focus when the device is unlocked." [Apple]
+        */
+        
+        // Define the file path to the plist files in the Document directory
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectoryPath = paths[0] as String
+        let dietaryPreferencePlistFilePathInDocumentDirectory = documentDirectoryPath + "/DietaryPreference.plist"
+        let cuisinePreferencesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/CuisinePreferences.plist"
+        let foodAllergiesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/FoodAllergies.plist"
+        
+        
+        var dietArray: NSMutableArray = NSMutableArray()
+        dietArray.addObject(diet)
+        
+        // Write the arrays to the appropriate plist files in the Document directory
+        
+        dietArray.writeToFile(dietaryPreferencePlistFilePathInDocumentDirectory, atomically: true)
+        cuisines.writeToFile(cuisinePreferencesPlistFilePathInDocumentDirectory, atomically: true)
+        allergies.writeToFile(foodAllergiesPlistFilePathInDocumentDirectory, atomically: true)
+        
+        /*
+        The flag "atomically" specifies whether the file should be written atomically or not.
+        
+        If flag is TRUE, the dictionary is first written to an auxiliary file, and
+        then the auxiliary file is renamed to path plistFilePathInDocumentDirectory.
+        
+        If flag is FALSE, the dictionary is written directly to path plistFilePathInDocumentDirectory.
+        This is a bad idea since the file can be corrupted if the system crashes during writing.
+        
+        The TRUE option guarantees that the file will not be corrupted even if the system crashes during writing.
+        */
     }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
+    
 }
 
