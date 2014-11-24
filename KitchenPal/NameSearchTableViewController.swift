@@ -10,6 +10,8 @@ import UIKit
 
 class NameSearchTableViewController: UITableViewController {
 
+    var dataObjectPassed = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
