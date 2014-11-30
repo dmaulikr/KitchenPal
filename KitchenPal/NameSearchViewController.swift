@@ -36,8 +36,12 @@ class NameSearchViewController: UIViewController {
     @IBAction func searchButtonPressed(sender: UIButton) {
         if validateTextFields() {
             
-            dataObjectToPass[0] = dishNameTextField.text
-            dataObjectToPass[1] = maxPrepTimeTextField.text
+            var dishName = dishNameTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var maxPrepTime = maxPrepTimeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            
+            dataObjectToPass[0] = dishName
+            dataObjectToPass[1] = maxPrepTime
             
             performSegueWithIdentifier("SearchRecipes", sender: self)
         }
