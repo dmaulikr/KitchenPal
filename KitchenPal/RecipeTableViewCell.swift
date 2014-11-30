@@ -10,9 +10,9 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
-    @IBOutlet var recipeImage: UIImageView!
+    @IBOutlet var recipeImageView: UIImageView!
     @IBOutlet var recipeName: UILabel!
-    @IBOutlet var recipeCourses: UILabel!
+    //@IBOutlet var recipeCourses: UILabel!
     @IBOutlet var recipeRating: UILabel!
     
     override func awakeFromNib() {
