@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NameRecipeViewController: UIViewController {
+class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     
     // Object references to the UI elements
     @IBOutlet var recipeImageView: UIImageView!
@@ -195,11 +195,11 @@ class NameRecipeViewController: UIViewController {
         
         if let piquantFlavor = piquantValue {
             
-            piquantFlavorLabel.text = "Piquant: \(piquantFlavor)"
+            piquantFlavorLabel.text = String(format: "Spicy: %0.2f", piquantValue!)
             piquantFlavorSlider.value = piquantFlavor
         } else {
             
-            piquantFlavorLabel.text = "Piquant: N/A"
+            piquantFlavorLabel.text = "Spicy: N/A"
         }
         
         
@@ -207,7 +207,7 @@ class NameRecipeViewController: UIViewController {
         
         if let bitterFlavor = bitterValue {
             
-            bitterFlavorLabel.text = "Bitter: \(bitterFlavor)"
+            bitterFlavorLabel.text = String(format: "Bitter: %0.2f", bitterValue!)
             bitterFlavorSlider.value = bitterFlavor
         } else {
             
@@ -218,7 +218,7 @@ class NameRecipeViewController: UIViewController {
         
         if let sweetFlavor = sweetValue {
             
-            sweetFlavorLabel.text = "Sweet: \(sweetFlavor)"
+            sweetFlavorLabel.text = String(format: "Sweet: %0.2f", sweetValue!)
             sweetFlavorSlider.value = sweetFlavor
         } else {
             
@@ -229,18 +229,18 @@ class NameRecipeViewController: UIViewController {
         
         if let meatyFlavor = meatyValue {
             
-            meatyFlavorLabel.text = "Meaty: \(meatyFlavor)"
+            meatyFlavorLabel.text = String(format: "Savory: %0.2f", meatyValue!)
             meatyFlavorSlider.value = meatyFlavor
         } else {
             
-            meatyFlavorLabel.text = "Meaty: N/A"
+            meatyFlavorLabel.text = "Savory: N/A"
         }
         
         var saltyValue = flavorsDict["Salty"]
         
         if let saltyFlavor = saltyValue {
             
-            saltyFlavorLabel.text = "Salty: \(saltyValue!)"
+            saltyFlavorLabel.text = String(format: "Salty: %0.2f", saltyValue!)
             saltyFlavorSlider.value = saltyValue!
         } else {
             
@@ -251,7 +251,7 @@ class NameRecipeViewController: UIViewController {
         
         if let sourFlavor = sourValue {
             
-            sourFlavorLabel.text = "Sour: \(sourFlavor)"
+            sourFlavorLabel.text = String(format: "Sour: %0.2f", sourValue!)
             sourFlavorSlider.value = sourFlavor
         } else {
             
@@ -327,7 +327,9 @@ class NameRecipeViewController: UIViewController {
         
     }
     
+    // Utilize HealthKit to add nutrition estimates to the Health app
     @IBAction func logInHealthAppPressed(sender: UIButton) {
+        
         
     }
     

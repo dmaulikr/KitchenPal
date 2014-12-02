@@ -14,6 +14,7 @@ class NameSearchViewController: UIViewController {
     
     @IBOutlet var maxPrepTimeTextField: UITextField!
     
+    // An array of the data objects to pass to the downstream view controller
     var dataObjectToPass = ["Dish Name", "Max Prep Time"]
     
     // MARK: - View Life Cycle
@@ -36,13 +37,15 @@ class NameSearchViewController: UIViewController {
     @IBAction func searchButtonPressed(sender: UIButton) {
         if validateTextFields() {
             
+            // Trim whitespace from the beginning and end of the text in the text fields.
             var dishName = dishNameTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             var maxPrepTime = maxPrepTimeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
-            
+            // Set the data objects to pass.
             dataObjectToPass[0] = dishName
             dataObjectToPass[1] = maxPrepTime
             
+            // Perform a segue to the NameSearceTableViewController
             performSegueWithIdentifier("SearchRecipes", sender: self)
         }
     }
@@ -50,11 +53,24 @@ class NameSearchViewController: UIViewController {
     // MARK: - Validate text field data
     func validateTextFields() -> Bool {
         
-        if dishNameTextField.text.isEmpty {
+        let alphanumericCharacters = NSCharacterSet.alphanumericCharacterSet()
+        
+        let rangeFound = dishNameTextField.text.rangeOfCharacterFromSet(alphanumericCharacters)
+        
+        // If the dish name text field is empty, display an alert and return false.
+        if let containsAlnum = rangeFound {
+            
+            // The text entered in the text field is valid
+            return true
+            
+        } else {
+            
+            // Either text field is empty or contains no alphanumeric characters
+            
             var alertView = UIAlertView()
             
-            alertView.title = "No Dish Name Entered"
-            alertView.message = "Please enter a Dish Name to search for and try again."
+            alertView.title = "No Dish Name Entered!"
+            alertView.message = "Please enter a Dish Name to search  and try again."
             alertView.delegate = nil
             alertView.addButtonWithTitle("OK")
             
@@ -62,8 +78,6 @@ class NameSearchViewController: UIViewController {
             
             return false
         }
-        
-        return true
     }
     
     // MARK: - Navigation
@@ -75,6 +89,7 @@ class NameSearchViewController: UIViewController {
             // Pass data to the downstream view controller
             var controller: NameSearchTableViewController = segue.destinationViewController as NameSearchTableViewController
             
+            // Pass the array of data to the downstream view controller.
             controller.dataObjectPassed = dataObjectToPass
         }
         
@@ -85,6 +100,7 @@ class NameSearchViewController: UIViewController {
     // This method is invoked when the user taps the Search button on the keyboard.
     @IBAction func keyboardDone(sender: UITextField) {
         
+        // Hides the keyboard by resigning first responder for the selected text field
         sender.resignFirstResponder()
     }
     

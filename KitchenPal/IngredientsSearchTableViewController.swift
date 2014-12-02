@@ -59,7 +59,11 @@ class IngredientsSearchTableViewController: UITableViewController {
         
         var jsonError: NSError?
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
         let jsonData: NSData? = NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingMapped, error: &jsonError)
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
         if let jsonDataFromURL = jsonData {
             
@@ -138,8 +142,12 @@ class IngredientsSearchTableViewController: UITableViewController {
         
         var errorInReadingImageData: NSError?
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
         // Retrieves the recipe thumbnail image data from the thumbnail URL
         var imageData: NSData? = NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &errorInReadingImageData)
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
         if let recipeImage = imageData {
             

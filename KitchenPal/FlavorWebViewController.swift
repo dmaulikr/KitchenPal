@@ -10,26 +10,53 @@ import UIKit
 
 class FlavorWebViewController: UIViewController {
 
+    var dataObjectPassed = ["Dish Name", "Preparation Steps URL"]
+    
+    @IBOutlet var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.title = dataObjectPassed[0]
+        
+        var url = NSURL(string: dataObjectPassed[1])
+        
+        var request = NSURLRequest(URL: url!)
+        
+        webView.loadRequest(request)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func webViewDidStartLoad(webView: UIWebView) {
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
-    */
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        
+        /*
+        Ignore this error if the page is instantly redirected via javascript or in another way.
+        NSURLErrorCancelled is returned when an asynchronous load is cancelled, which happens
+        when the page is instantly redirected via javascript or in another way.
+        */
+        if error.code == NSURLErrorCancelled {
+            return
+        }
+        
+        // An error occurred during the web page load. Hide the activity indicator in the status bar.
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
+        // Create the error message in HTML as a character string and store it into the local constant errorString
+        let errorString = "<html><font size=+2 color='red'><p>An error occurred: <br />Possible causes for this error:<br />- No network connection<br />- Wrong URL entered<br />- Server computer is down</p></font></html>" + error.localizedDescription
+        
+        // Display the error message within the UIWebView object
+        self.webView.loadHTMLString(errorString, baseURL: nil)
+        
+    }
+
 
 }
