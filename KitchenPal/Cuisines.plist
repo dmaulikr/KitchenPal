@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
-	<string>American</string>
-	<string>Italian</string>
-	<string>Asian</string>
-	<string>Mexican</string>
-	<string>Southern &amp; Soul Food</string>
-	<string>French</string>
-	<string>Southwestern</string>
-	<string>Barbecue</string>
-	<string>Indian</string>
-	<string>Chinese</string>
-	<string>Cajun &amp; Creole</string>
-	<string>English</string>
-	<string>Mediterranean</string>
-	<string>Greek</string>
-	<string>Spanish</string>
-	<string>German</string>
-	<string>Thai</string>
-	<string>Moroccan</string>
-	<string>Irish</string>
-	<string>Japanese</string>
-	<string>Cuban</string>
-	<string>Hawaiin</string>
-	<string>Swedish</string>
-	<string>Hungarian</string>
-	<string>Portugese</string>
-</array>
+<dict>
+	<key>American</key>
+	<string>cuisine^cuisine-american</string>
+	<key>Italian</key>
+	<string>cuisine^cuisine-italian</string>
+	<key>Asian</key>
+	<string>cuisine^cuisine-asian</string>
+	<key>Mexican</key>
+	<string>cuisine^cuisine-mexican</string>
+	<key>Southern &amp; Soul Food</key>
+	<string>cuisine^cuisine-southern</string>
+	<key>French</key>
+	<string>cuisine^cuisine-french</string>
+	<key>Southwestern</key>
+	<string>cuisine^cuisine-southwestern</string>
+	<key>Barbecue</key>
+	<string>cuisine^cuisine-barbecue-bbq</string>
+	<key>Indian</key>
+	<string>cuisine^cuisine-indian</string>
+	<key>Chinese</key>
+	<string>cuisine^cuisine-chinese</string>
+	<key>Cajun &amp; Creole</key>
+	<string>cuisine^cuisine-cajun</string>
+	<key>English</key>
+	<string>cuisine^cuisine-english</string>
+	<key>Mediterranean</key>
+	<string>cuisine^cuisine-mediterranean</string>
+	<key>Greek</key>
+	<string>cuisine^cuisine-greek</string>
+	<key>Spanish</key>
+	<string>cuisine^cuisine-spanish</string>
+	<key>German</key>
+	<string>cuisine^cuisine-german</string>
+	<key>Thai</key>
+	<string>cuisine^cuisine-thai</string>
+	<key>Moroccan</key>
+	<string>cuisine^cuisine-moroccan</string>
+	<key>Irish</key>
+	<string>cuisine^cuisine-irish</string>
+	<key>Japanese</key>
+	<string>cuisine^cuisine-japanese</string>
+	<key>Cuban</key>
+	<string>cuisine^cuisine-cuban</string>
+	<key>Hawaiin</key>
+	<string>cuisine^cuisine-hawaiin</string>
+	<key>Swedish</key>
+	<string>cuisine^cuisine-swedish</string>
+	<key>Hungarian</key>
+	<string>cuisine^cuisine-hungarian</string>
+	<key>Portugese</key>
+	<string>cuisine^cuisine-portugese</string>
+</dict>
 </plist>

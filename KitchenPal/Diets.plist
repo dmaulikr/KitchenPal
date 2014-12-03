@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
-	<string>Lacto vegetarian</string>
-	<string>Ovo vegetarian</string>
-	<string>Pescetarian</string>
-	<string>Vegan</string>
-	<string>Vegetarian</string>
-</array>
+<dict>
+	<key>Lacto vegetarian</key>
+	<string>388^Lacto+vegetarian</string>
+	<key>Ovo vegetarian</key>
+	<string>389^Ovo+vegetarian</string>
+	<key>Pescetarian</key>
+	<string>390^Pescetarian</string>
+	<key>Vegan</key>
+	<string>386^Vegan</string>
+	<key>Vegetarian</key>
+	<string>387^Lacto-ovo+vegetarian</string>
+	<key>Paleo</key>
+	<string>403^Paleo</string>
+</dict>
 </plist>
