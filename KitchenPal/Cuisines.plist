@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<array>
+	<string>American</string>
+	<string>Italian</string>
+	<string>Asian</string>
+	<string>Mexican</string>
+	<string>Southern &amp; Soul Food</string>
+	<string>French</string>
+	<string>Southwestern</string>
+	<string>Barbecue</string>
+	<string>Indian</string>
+	<string>Chinese</string>
+	<string>Cajun &amp; Creole</string>
+	<string>English</string>
+	<string>Mediterranean</string>
+	<string>Greek</string>
+	<string>Spanish</string>
+	<string>German</string>
+	<string>Thai</string>
+	<string>Moroccan</string>
+	<string>Irish</string>
+	<string>Japanese</string>
+	<string>Cuban</string>
+	<string>Hawaiin</string>
+	<string>Swedish</string>
+	<string>Hungarian</string>
+	<string>Portugese</string>
+</array>
 </plist>
