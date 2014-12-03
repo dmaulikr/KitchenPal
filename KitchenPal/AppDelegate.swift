@@ -20,8 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // An array of cuisine preferences selected by the user.
     var cuisines: NSMutableArray = NSMutableArray.alloc()
     
-    var window: UIWindow?
+    var allDiets: NSArray = NSArray.alloc()
     
+    var allCuisines: NSArray = NSArray.alloc()
+    
+    var allAllergies: NSArray = NSArray.alloc()
+    
+    var dict_allergy_allergyQuery = NSDictionary.alloc()
+    
+    var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -98,6 +105,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // FoodAllergies.plist does not exist in the Document directory; set the default allergy array to be empty.
             self.allergies = NSMutableArray()
         }
+        
+        // Obtain the file path to the Diets plist file in the mainBundle (project folder)
+        var dietsPlistFilePathInMainBundle = NSBundle.mainBundle().pathForResource("Diets", ofType: "plist")
+        
+        // Instantiate an NSMutableArray object and initialize it with the contents of the Diets.plist file
+        var dietsArrayFromFileInMainBundle: NSMutableArray? = NSMutableArray(contentsOfFile: dietsPlistFilePathInMainBundle!)
+        
+        // Assign the NSMutableArray to the property
+        self.allDiets = dietsArrayFromFileInMainBundle!
+        
+        // Obtain the file path to the Cuisines plist file in the mainBundle (project folder)
+        var cuisinesPlistFilePathInMainBundle = NSBundle.mainBundle().pathForResource("Cuisines", ofType: "plist")
+        
+        // Instantiate an NSMutableArray object and initialize it with the contents of the Diets.plist file
+        var cuisinesArrayFromFileInMainBundle: NSMutableArray? = NSMutableArray(contentsOfFile: cuisinesPlistFilePathInMainBundle!)
+        
+        // Assign the NSMutableArray to the property
+        self.allCuisines = cuisinesArrayFromFileInMainBundle!
+        
+        // Obtain the file path to the Allergies plist file in the mainBundle (project folder)
+        var allergiesPlistFilePathInMainBundle = NSBundle.mainBundle().pathForResource("Allergies", ofType: "plist")
+        
+        // Instantiate an NSMutableArray object and initialize it with the contents of the Allergies.plist file
+        var allergiesDictionaryFromFileInMainBundle: NSDictionary? = NSDictionary(contentsOfFile: allergiesPlistFilePathInMainBundle!)
+        
+        // Assign the NSMutableArray to the property
+        self.allAllergies = allergiesDictionaryFromFileInMainBundle!.allKeys
+        
+        self.dict_allergy_allergyQuery = allergiesDictionaryFromFileInMainBundle!
+        
+        // Sort the arrays in alphabetical order.
+        self.allAllergies.sortedArrayUsingSelector(Selector("localizedCaseInsensitiveCompare:"))
+        self.allCuisines.sortedArrayUsingSelector(Selector("localizedCaseInsensitiveCompare:"))
         
         return true
     }
