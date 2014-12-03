@@ -10,6 +10,9 @@ import UIKit
 
 class NameSearchTableViewController: UITableViewController {
 
+    // Object reference to the AppDelegate object.
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     let tableViewRowHeight: CGFloat = 80.0
     
     // The search query for the entered data from the upstream view controller.
@@ -47,14 +50,28 @@ class NameSearchTableViewController: UITableViewController {
         
         // The API URL containing my APP ID and App Key, with search parameters appended.
         // Only fetches results with pictures, and fetches the top 20 results.
-        var apiURL: String = "http://api.yummly.com/v1/api/recipes?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6&q=\(dishNameParameter)&requirePictures=true&maxResult=20"
+        var apiURL: String = "http://api.yummly.com/v1/api/recipes?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6&q=\(dishNameParameter)"
         
         // If the user provided a max prep time, append it to the end of the query.
         if !maxPrepTimeParameter.isEmpty {
             apiURL += "&maxTotalTimeInSeconds=\(maxPrepTimeParameter)"
         }
         
+        // Append any allergies to the search query
+        for allergy in appDelegate.allergies {
+            
+            var allergyQuery = appDelegate.dict_allergy_allergyQuery.objectForKey(allergy)! as String
+            
+            allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            
+            apiURL += "&allowedAllergy[]=\(allergyQuery)"
+        }
+        
+        apiURL += "&requirePictures=true&maxResult=20"
+        
         var url = NSURL(string: apiURL)
+        
+        println(url!)
         
         var jsonError: NSError?
         

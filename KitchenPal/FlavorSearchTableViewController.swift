@@ -10,6 +10,9 @@ import UIKit
 
 class FlavorSearchTableViewController: UITableViewController {
 
+    // An object reference to the AppDelegate object for this project
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     let tableViewRowHeight: CGFloat = 80.0
     
     // The search query for the entered data from the upstream view controller.
@@ -51,6 +54,16 @@ class FlavorSearchTableViewController: UITableViewController {
             
             // Append the min and max flavor values for the current flavor to the apiURL
             apiURL += "&flavor.\(key).min=\(minMaxValueForFlavor[0])&flavor.\(key).max=\(minMaxValueForFlavor[1])"
+        }
+        
+        // Append any allergies to the search query
+        for allergy in appDelegate.allergies {
+            
+            var allergyQuery = appDelegate.dict_allergy_allergyQuery.objectForKey(allergy)! as String
+            
+            allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            
+            apiURL += "&allowedAllergy[]=\(allergyQuery)"
         }
         
         apiURL += "&requirePictures=true&maxResult=20"

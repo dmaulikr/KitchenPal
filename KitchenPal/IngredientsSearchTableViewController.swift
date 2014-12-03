@@ -10,6 +10,9 @@ import UIKit
 
 class IngredientsSearchTableViewController: UITableViewController {
 
+    // Get the object reference to the AppDelegate object for this application.
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     let tableViewRowHeight: CGFloat = 80.0
     
     // The search query for the entered data from the upstream view controller.
@@ -51,6 +54,17 @@ class IngredientsSearchTableViewController: UITableViewController {
         for ingredient in dataObjectPassed {
             
             apiURL += "&allowedIngredient[]=\(ingredient)"
+        }
+        
+        // Append any allergies to the search query
+        for allergy in appDelegate.allergies {
+            
+            var allergyQuery = appDelegate.dict_allergy_allergyQuery.objectForKey(allergy)! as String
+            
+            allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            
+            apiURL += "&allowedAllergy[]=\(allergyQuery)"
+            
         }
         
         apiURL += "&requirePictures=true&maxResult=20"
