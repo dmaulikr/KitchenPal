@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CA</key>
+	<string>HKQuantityTypeIdentifierDietaryCalcium</string>
+	<key>CHOCDF</key>
+	<string>HKQuantityTypeIdentifierDietaryCarbohydrates</string>
+	<key>CHOLE</key>
+	<string>HKQuantityTypeIdentifierDietaryCholesterol</string>
+	<key>CU</key>
+	<string>HKQuantityTypeIdentifierDietaryCopper</string>
+	<key>FASAT</key>
+	<string>HKQuantityTypeIdentifierDietaryFatSaturated</string>
+	<key>FAT</key>
+	<string>HKQuantityTypeIdentifierDietaryFatTotal</string>
+	<key>FIBTG</key>
+	<string>HKQuantityTypeIdentifierDietaryFiber</string>
+	<key>FOLDFE</key>
+	<string>HKQuantityTypeIdentifierDietaryFolate</string>
+	<key>FE</key>
+	<string>HKQuantityTypeIdentifierDietaryIron</string>
+	<key>MG</key>
+	<string>HKQuantityTypeIdentifierDietaryMagnesium</string>
+	<key>MN</key>
+	<string>HKQuantityTypeIdentifierDietaryManganese</string>
+	<key>NIA</key>
+	<string>HKQuantityTypeIdentifierDietaryNiacin</string>
+	<key>PANTAC</key>
+	<string>HKQuantityTypeIdentifierDietaryPantothenicAcid</string>
+	<key>P</key>
+	<string>HKQuantityTypeIdentifierDietaryPhosphorus</string>
+	<key>K</key>
+	<string>HKQuantityTypeIdentifierDietaryPotassium</string>
+	<key>PROCNT</key>
+	<string>HKQuantityTypeIdentifierDietaryProtein</string>
+	<key>RIBF</key>
+	<string>HKQuantityTypeIdentifierDietaryRiboflavin</string>
+	<key>SE</key>
+	<string>HKQuantityTypeIdentifierDietarySelenium</string>
+	<key>NA</key>
+	<string>HKQuantityTypeIdentifierDietarySodium</string>
+	<key>SUGAR</key>
+	<string>HKQuantityTypeIdentifierDietarySugar</string>
+	<key>VITC</key>
+	<string>HKQuantityTypeIdentifierDietaryVitaminC</string>
+	<key>VITB12</key>
+	<string>HKQuantityTypeIdentifierDietaryVitaminB12</string>
+	<key>VITK</key>
+	<string>HKQuantityTypeIdentifierDietaryVitaminK</string>
+	<key>ZN</key>
+	<string>HKQuantityTypeIdentifierDietaryZinc</string>
+</dict>
+</plist>
