@@ -96,7 +96,6 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
             
             var recipesPresent = recipeImages.keys
             
-            
             // Use the medium image if present, followed by the large, and if neither exist then use the
             // small image.
             if contains(recipesPresent, "hostedMediumUrl") {
@@ -128,9 +127,6 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
                 showErrorMessageFor("Error occurred while retrieving recipe image data!")
             }
         }
-        
-        
-        
         
         /*
         ---------------------------------------------------------

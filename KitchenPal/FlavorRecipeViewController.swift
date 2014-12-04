@@ -78,7 +78,6 @@ class FlavorRecipeViewController: UIViewController {
             return
         }
         
-        
         /*
         ------------------------------------
         Set the Recipe Image
@@ -128,9 +127,6 @@ class FlavorRecipeViewController: UIViewController {
                 showErrorMessageFor("Error occurred while retrieving recipe image data!")
             }
         }
-        
-        
-        
         
         /*
         ---------------------------------------------------------
@@ -257,7 +253,6 @@ class FlavorRecipeViewController: UIViewController {
             
             sourFlavorLabel.text = "Sour: N/A"
         }
-
         
         /*
         ------------------------------------

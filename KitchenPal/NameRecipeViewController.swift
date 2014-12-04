@@ -78,7 +78,6 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        
         /*
         ------------------------------------
         Set the Recipe Image
@@ -128,9 +127,6 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
                 showErrorMessageFor("Error occurred while retrieving recipe image data!")
             }
         }
-        
-        
-        
         
         /*
         ---------------------------------------------------------
