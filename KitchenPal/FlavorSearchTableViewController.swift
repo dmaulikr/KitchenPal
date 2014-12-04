@@ -198,20 +198,6 @@ class FlavorSearchTableViewController: UITableViewController {
         
         cell.recipeName!.text = recipeName
         
-        /*
-        //--------------------------
-        // Set Recipe Courses
-        //--------------------------
-        
-        let attributesDict = recipeDataDict["attributes"] as Dictionary<String, AnyObject>
-        
-        let coursesDict = attributesDict["course"] as Array<String>
-        
-        var joinedCourses: String = ", ".join(coursesDict)
-        
-        cell.recipeCourses!.text = joinedCourses
-        */
-        
         //------------------------
         // Set Recipe Rating
         //------------------------
