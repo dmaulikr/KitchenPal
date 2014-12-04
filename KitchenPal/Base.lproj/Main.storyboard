@@ -2146,8 +2146,8 @@
                                 <exclude reference="GUS-P7-TZj"/>
                                 <exclude reference="gnx-OB-2fQ"/>
                                 <exclude reference="f3M-qw-lmm"/>
-                                <exclude reference="zZJ-e7-rf0"/>
                                 <exclude reference="LCl-GS-naA"/>
+                                <exclude reference="zZJ-e7-rf0"/>
                             </mask>
                         </variation>
                     </view>
