@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // DietaryPreference.plist does not exist in the Document directory; Set the default diet String to be empty.
             
-            self.diet = ""
+            self.diet = "None"
             
         }
         
