@@ -21,8 +21,6 @@ class NameSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     override func viewWillAppear(animated: Bool) {
