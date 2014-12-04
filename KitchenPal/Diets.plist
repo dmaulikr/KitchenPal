@@ -14,5 +14,7 @@
 	<string>387^Lacto-ovo+vegetarian</string>
 	<key>Paleo</key>
 	<string>403^Paleo</string>
+	<key>None</key>
+	<string></string>
 </dict>
 </plist>
