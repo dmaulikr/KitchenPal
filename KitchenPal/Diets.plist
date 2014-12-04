@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>None</key>
+	<string></string>
 	<key>Lacto vegetarian</key>
 	<string>388^Lacto+vegetarian</string>
 	<key>Ovo vegetarian</key>
@@ -14,7 +16,5 @@
 	<string>387^Lacto-ovo+vegetarian</string>
 	<key>Paleo</key>
 	<string>403^Paleo</string>
-	<key>None</key>
-	<string></string>
 </dict>
 </plist>
