@@ -9,7 +9,7 @@
 import UIKit
 
 class IngredientsSearchTableViewController: UITableViewController {
-
+    
     // Get the object reference to the AppDelegate object for this application.
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
@@ -59,12 +59,30 @@ class IngredientsSearchTableViewController: UITableViewController {
         // Append any allergies to the search query
         for allergy in appDelegate.allergies {
             
-            var allergyQuery = appDelegate.dict_allergy_allergyQuery.objectForKey(allergy)! as String
+            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery.objectForKey(allergy)! as String
             
             allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(allergyQuery)"
             
+        }
+        
+        for cuisine in appDelegate.cuisines {
+            
+            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery.objectForKey(cuisine)! as String
+            
+            cuisineQuery = cuisineQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            
+            apiURL += "&allowedAllergy[]=\(cuisineQuery)"
+        }
+        
+        if !appDelegate.diet.isEmpty {
+            
+            var dietQuery = appDelegate.dict_Diet_DietQuery.objectForKey(appDelegate.diet)! as String
+            
+            dietQuery = dietQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            
+            apiURL += "&allowedDiet[]=\(dietQuery)"
         }
         
         apiURL += "&requirePictures=true&maxResult=20"
