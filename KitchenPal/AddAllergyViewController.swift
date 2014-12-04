@@ -25,6 +25,8 @@ class AddAllergyViewController: UIViewController, UIPickerViewDataSource, UIPick
 
         let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveAllergy:")
         self.navigationItem.rightBarButtonItem = saveButton
+        
+        self.title = "Add Allergy"
     }
     
     override func viewWillAppear(animated: Bool) {
