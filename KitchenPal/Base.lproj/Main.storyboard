@@ -625,30 +625,6 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWU-oW-Zq9">
-                                        <rect key="frame" x="230" y="609" width="141" height="30"/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="141" id="2em-OK-HDf"/>
-                                            <constraint firstAttribute="width" constant="141" id="kUf-zH-p03"/>
-                                            <constraint firstAttribute="height" constant="30" id="nTl-of-3Nc"/>
-                                            <constraint firstAttribute="width" constant="141" id="y1H-EQ-raz"/>
-                                        </constraints>
-                                        <state key="normal" title="Log in Health App">
-                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="2em-OK-HDf"/>
-                                                <exclude reference="kUf-zH-p03"/>
-                                                <exclude reference="nTl-of-3Nc"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="logInHealthAppPressed:" destination="oHf-e3-1XP" eventType="touchUpInside" id="aPz-4G-qZJ"/>
-                                        </connections>
-                                    </button>
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="muw-Qg-ubX">
                                         <rect key="frame" x="134" y="381" width="460" height="31"/>
                                         <constraints>
@@ -715,6 +691,32 @@
                                             </mask>
                                         </variation>
                                     </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWU-oW-Zq9">
+                                        <rect key="frame" x="198" y="609" width="205" height="30"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="141" id="2em-OK-HDf"/>
+                                            <constraint firstAttribute="width" constant="205" id="Vbl-n6-Hhv"/>
+                                            <constraint firstAttribute="width" constant="141" id="kUf-zH-p03"/>
+                                            <constraint firstAttribute="height" constant="30" id="nTl-of-3Nc"/>
+                                            <constraint firstAttribute="width" constant="141" id="y1H-EQ-raz"/>
+                                        </constraints>
+                                        <state key="normal" title="View Nutrition Information">
+                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2em-OK-HDf"/>
+                                                <exclude reference="kUf-zH-p03"/>
+                                                <exclude reference="nTl-of-3Nc"/>
+                                                <exclude reference="y1H-EQ-raz"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="logInHealthAppPressed:" destination="oHf-e3-1XP" eventType="touchUpInside" id="4Ky-4X-sLr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="oo8-nr-dJm" firstAttribute="top" secondItem="muw-Qg-ubX" secondAttribute="bottom" constant="8" symbolic="YES" id="08S-Ao-IwO"/>
@@ -966,14 +968,14 @@
                                         <exclude reference="fm2-c0-JEb"/>
                                         <exclude reference="gcW-QS-Wc1"/>
                                         <exclude reference="yeR-wq-fmr"/>
+                                        <exclude reference="4Qy-ou-hNA"/>
+                                        <exclude reference="HeQ-kL-c5X"/>
+                                        <exclude reference="XJf-de-SmU"/>
                                         <exclude reference="0FF-J9-NaD"/>
                                         <exclude reference="NQG-KY-F60"/>
                                         <exclude reference="Pvj-AR-ANn"/>
                                         <exclude reference="i0l-f9-HVF"/>
                                         <exclude reference="nTL-4m-5lu"/>
-                                        <exclude reference="4Qy-ou-hNA"/>
-                                        <exclude reference="HeQ-kL-c5X"/>
-                                        <exclude reference="XJf-de-SmU"/>
                                         <exclude reference="1Px-BR-n0O"/>
                                         <exclude reference="42S-oy-t3r"/>
                                         <exclude reference="TIT-tp-QDr"/>
@@ -1016,11 +1018,66 @@
                         <outlet property="sweetFlavorSlider" destination="EoZ-Ox-4aG" id="poM-no-n7L"/>
                         <outlet property="totalPrepTimeLabel" destination="KZT-zH-NlU" id="7Vw-lV-ShO"/>
                         <segue destination="67q-HG-058" kind="show" identifier="PreparationSteps" id="r6t-hP-I4j"/>
+                        <segue destination="6Hp-Cn-fzK" kind="show" identifier="ShowNutrition" id="nnz-zE-itP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE9-mh-GmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126" y="-1392"/>
+            <point key="canvasLocation" x="3160" y="-1449"/>
+        </scene>
+        <!--Ingredients Nutrition View Controller-->
+        <scene sceneID="gQ6-Ky-bpG">
+            <objects>
+                <viewController id="idi-cS-BEV" customClass="IngredientsNutritionViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dQP-VH-Ic6"/>
+                        <viewControllerLayoutGuide type="bottom" id="QdM-di-dAR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V0l-RK-teL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbP-Ei-HYA">
+                                <rect key="frame" x="230" y="513" width="141" height="30"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0Pd-Cz-jYN"/>
+                                    <constraint firstAttribute="width" constant="141" id="7Ps-3K-O09"/>
+                                </constraints>
+                                <state key="normal" title="Log in Health App">
+                                    <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInHealthAppPressed:" destination="idi-cS-BEV" eventType="touchUpInside" id="7iE-XL-rbf"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Nutrition Information Here" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0H0-aB-tVA">
+                                <rect key="frame" x="0.0" y="64" width="600" height="441"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0H0-aB-tVA" secondAttribute="trailing" id="9bQ-eQ-0Ck"/>
+                            <constraint firstItem="lbP-Ei-HYA" firstAttribute="top" secondItem="0H0-aB-tVA" secondAttribute="bottom" constant="8" id="BGo-IP-DPL"/>
+                            <constraint firstItem="QdM-di-dAR" firstAttribute="top" secondItem="lbP-Ei-HYA" secondAttribute="bottom" constant="8" id="JxF-Lb-rjW"/>
+                            <constraint firstItem="0H0-aB-tVA" firstAttribute="leading" secondItem="V0l-RK-teL" secondAttribute="leading" id="KFL-JE-b3F"/>
+                            <constraint firstAttribute="centerX" secondItem="lbP-Ei-HYA" secondAttribute="centerX" id="bIQ-mN-9Nf"/>
+                            <constraint firstItem="0H0-aB-tVA" firstAttribute="top" secondItem="dQP-VH-Ic6" secondAttribute="bottom" id="nuk-bq-aGB"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="nutritionInfoTextView" destination="0H0-aB-tVA" id="fwW-d6-Dqy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sy2-tY-qlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3878" y="-731"/>
         </scene>
         <!--Name Web View Controller-->
         <scene sceneID="acz-bm-nos">
@@ -1059,7 +1116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwe-sH-NQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3893" y="-1392"/>
+            <point key="canvasLocation" x="3887" y="-1388"/>
         </scene>
         <!--Recipe Search by Flavor-->
         <scene sceneID="Zjw-vK-VbH">
@@ -2348,7 +2405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzZ-zI-c6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3878" y="-421"/>
+            <point key="canvasLocation" x="3887" y="-91"/>
         </scene>
         <!--Flavor Web View Controller-->
         <scene sceneID="z3z-PU-N3E">
@@ -2387,7 +2444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkE-EB-his" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3916" y="509"/>
+            <point key="canvasLocation" x="3829" y="1250"/>
         </scene>
         <!--Ingredients Recipe View Controller-->
         <scene sceneID="B7W-yG-aOb">
@@ -2580,20 +2637,6 @@
                                             <constraint firstAttribute="width" constant="88" id="oyJ-Mb-w4B"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGt-bp-Krl">
-                                        <rect key="frame" x="230" y="609" width="141" height="30"/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="141" id="YEE-DM-3il"/>
-                                        </constraints>
-                                        <state key="normal" title="Log in Health App">
-                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logInHealthAppPressed:" destination="Yb3-dQ-Pa5" eventType="touchUpInside" id="JN1-U3-38n"/>
-                                        </connections>
-                                    </button>
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aCe-P2-7zS">
                                         <rect key="frame" x="134" y="381" width="460" height="31"/>
                                     </slider>
@@ -2612,6 +2655,26 @@
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JdA-6Z-Oac">
                                         <rect key="frame" x="134" y="495" width="460" height="31"/>
                                     </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGt-bp-Krl">
+                                        <rect key="frame" x="198" y="609" width="205" height="30"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="141" id="YEE-DM-3il"/>
+                                            <constraint firstAttribute="width" constant="205" id="rpa-uK-N0p"/>
+                                        </constraints>
+                                        <state key="normal" title="Show Nutrition Information">
+                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="YEE-DM-3il"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="viewNutritionInfoPressed:" destination="Yb3-dQ-Pa5" eventType="touchUpInside" id="7O6-Ix-qfX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ntU-vV-vOe" firstAttribute="top" secondItem="XPB-7F-hYU" secondAttribute="bottom" constant="17" id="07y-Pu-1Ej"/>
@@ -2743,6 +2806,7 @@
                         <outlet property="sweetFlavorSlider" destination="v2g-JI-W14" id="4XO-x4-AUH"/>
                         <outlet property="totalPrepTimeLabel" destination="J98-c8-jEt" id="qyq-Wz-5HY"/>
                         <segue destination="eg5-Hq-BRQ" kind="show" identifier="PreparationSteps" id="6aP-z4-tVm"/>
+                        <segue destination="idi-cS-BEV" kind="show" identifier="ShowNutrition" id="8w7-db-KKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjj-95-6wm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2940,20 +3004,6 @@
                                             <constraint firstAttribute="width" constant="88" id="XwF-oo-nc2"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gem-JN-716">
-                                        <rect key="frame" x="230" y="609" width="141" height="30"/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="141" id="pMX-ZY-8CI"/>
-                                        </constraints>
-                                        <state key="normal" title="Log in Health App">
-                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logInHealthAppPressed:" destination="YH9-J5-kNE" eventType="touchUpInside" id="kZN-tq-ul9"/>
-                                        </connections>
-                                    </button>
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ixj-w5-fkH">
                                         <rect key="frame" x="134" y="381" width="460" height="31"/>
                                     </slider>
@@ -2972,6 +3022,26 @@
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yPh-tW-M4k">
                                         <rect key="frame" x="134" y="495" width="460" height="31"/>
                                     </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gem-JN-716">
+                                        <rect key="frame" x="198" y="609" width="205" height="30"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="205" id="eea-Y8-NgU"/>
+                                            <constraint firstAttribute="width" constant="141" id="pMX-ZY-8CI"/>
+                                        </constraints>
+                                        <state key="normal" title="Show Nutrition Information">
+                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="pMX-ZY-8CI"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="logInHealthAppPressed:" destination="YH9-J5-kNE" eventType="touchUpInside" id="kZN-tq-ul9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="gem-JN-716" firstAttribute="top" secondItem="Pko-EW-gCt" secondAttribute="bottom" constant="8" symbolic="YES" id="0A6-PQ-GBG"/>
@@ -3103,11 +3173,12 @@
                         <outlet property="sweetFlavorSlider" destination="kmM-9T-aI3" id="Jk3-sV-GAy"/>
                         <outlet property="totalPrepTimeLabel" destination="S6C-5L-E8a" id="qiq-Y7-qEB"/>
                         <segue destination="SNw-qX-2YX" kind="show" identifier="PreparationSteps" id="lld-Fw-LrV"/>
+                        <segue destination="Fd7-b4-jIN" kind="show" identifier="ShowNutrition" id="pqh-6D-qxo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geD-Tt-iR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3098" y="504"/>
+            <point key="canvasLocation" x="3089" y="626"/>
         </scene>
         <!--Ingredients Search Table View Controller-->
         <scene sceneID="KXN-cD-Hep">
@@ -3252,6 +3323,114 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UH-AR-Ofc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2326" y="359"/>
+        </scene>
+        <!--Name Nutrition View Controller-->
+        <scene sceneID="kTa-nT-ffN">
+            <objects>
+                <viewController id="6Hp-Cn-fzK" customClass="NameNutritionViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dNc-WY-yPT"/>
+                        <viewControllerLayoutGuide type="bottom" id="ePI-JG-GTc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oO3-5U-LOl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-NE-t6j">
+                                <rect key="frame" x="230" y="513" width="141" height="30"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="IA6-kX-IhF"/>
+                                    <constraint firstAttribute="height" constant="30" id="KEt-Bi-Sih"/>
+                                </constraints>
+                                <state key="normal" title="Log in Health App">
+                                    <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInHealthAppPressed:" destination="6Hp-Cn-fzK" eventType="touchUpInside" id="EvN-aF-RZ2"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Nutrition Information Here" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLN-Hw-4d9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="441"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HLN-Hw-4d9" secondAttribute="trailing" id="AWb-SF-0qK"/>
+                            <constraint firstItem="HLN-Hw-4d9" firstAttribute="leading" secondItem="oO3-5U-LOl" secondAttribute="leading" id="IyG-Yt-KtY"/>
+                            <constraint firstItem="HLN-Hw-4d9" firstAttribute="top" secondItem="dNc-WY-yPT" secondAttribute="bottom" id="Mqa-m4-xMD"/>
+                            <constraint firstItem="ePI-JG-GTc" firstAttribute="top" secondItem="ffC-NE-t6j" secondAttribute="bottom" constant="8" id="hH9-lJ-NxZ"/>
+                            <constraint firstItem="ffC-NE-t6j" firstAttribute="top" secondItem="HLN-Hw-4d9" secondAttribute="bottom" constant="8" id="t5S-yo-Qgl"/>
+                            <constraint firstAttribute="centerX" secondItem="ffC-NE-t6j" secondAttribute="centerX" id="xbl-4G-Oe8"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="nutritionInfoTextView" destination="HLN-Hw-4d9" id="j9p-Vu-JSI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exl-oJ-ha8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3887" y="-2059"/>
+        </scene>
+        <!--Flavor Nutrition View Controller-->
+        <scene sceneID="Ulq-hq-lHr">
+            <objects>
+                <viewController id="Fd7-b4-jIN" customClass="FlavorNutritionViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y5F-gY-MJG"/>
+                        <viewControllerLayoutGuide type="bottom" id="dex-LR-P7g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Gm-og-RBv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-aR-g5h">
+                                <rect key="frame" x="230" y="513" width="141" height="30"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KcI-bE-FPv"/>
+                                    <constraint firstAttribute="width" constant="141" id="ZNu-n7-aGc"/>
+                                </constraints>
+                                <state key="normal" title="Log in Health App">
+                                    <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInHealthAppPressed:" destination="Fd7-b4-jIN" eventType="touchUpInside" id="R9K-at-OLZ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Nutrition Information Here" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTU-xN-sOo">
+                                <rect key="frame" x="0.0" y="64" width="600" height="441"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OTU-xN-sOo" secondAttribute="trailing" id="76E-os-lXm"/>
+                            <constraint firstItem="OTU-xN-sOo" firstAttribute="leading" secondItem="7Gm-og-RBv" secondAttribute="leading" id="BjP-bT-ahA"/>
+                            <constraint firstItem="OTU-xN-sOo" firstAttribute="top" secondItem="Y5F-gY-MJG" secondAttribute="bottom" id="TA3-Dr-DCW"/>
+                            <constraint firstItem="dex-LR-P7g" firstAttribute="top" secondItem="EBW-aR-g5h" secondAttribute="bottom" constant="8" id="ZtA-WM-DVd"/>
+                            <constraint firstAttribute="centerX" secondItem="EBW-aR-g5h" secondAttribute="centerX" id="urZ-Ie-Wnt"/>
+                            <constraint firstItem="EBW-aR-g5h" firstAttribute="top" secondItem="OTU-xN-sOo" secondAttribute="bottom" constant="8" id="vWZ-WK-2Ia"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="nutritionInfoTextView" destination="OTU-xN-sOo" id="cj4-4N-2QM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aaa-XW-s3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3887" y="571"/>
         </scene>
     </scenes>
     <resources>
