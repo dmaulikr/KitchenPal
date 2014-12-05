@@ -89,8 +89,6 @@ class NameSearchTableViewController: UITableViewController {
         
         var url = NSURL(string: apiURL)
         
-        println(url!)
-        
         var jsonError: NSError?
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true

@@ -38,7 +38,7 @@ class IngredientsSearchViewController: UIViewController {
             // Trim whitespace for each ingredient entered.
             for var i = 0; i < ingredientsArray.count; i++ {
                 
-                ingredientsArray[i] = ingredientsArray[i].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                ingredientsArray[i] = ingredientsArray[i].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).lowercaseString
 
             }
             
