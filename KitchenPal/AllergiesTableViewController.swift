@@ -23,8 +23,8 @@ class AllergiesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addAllergy:")
-        self.navigationItem.rightBarButtonItem = addButton
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem()]
     }
     
     // MARK: - Add Allergy Method

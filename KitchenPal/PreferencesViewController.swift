@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DietCuisineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PreferencesViewController: UIViewController {
+    
     @IBOutlet var leftArrowWhite: UIImageView!
     @IBOutlet var rightArrowWhite: UIImageView!
-    @IBOutlet var cuisinesTableView: UITableView!
     
     // References to the Storyboard objects
     @IBOutlet var scrollMenu: UIScrollView!
@@ -26,12 +26,6 @@ class DietCuisineViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addCuisine:")
-        self.navigationItem.rightBarButtonItem = addButton
-        
-        // Must manually link editing button to edit table view action. 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         /*
         ---------------------
@@ -143,14 +137,19 @@ class DietCuisineViewController: UIViewController, UITableViewDelegate, UITableV
         appDelegate.diet = selectedButton.titleForState(UIControlState.Normal)!
     }
     
+    @IBAction func cuisineSelectionPressed(sender: UIButton) {
+        
+        performSegueWithIdentifier("CuisineSelection", sender: self)
+    }
+    
+    @IBAction func allergySelectionPressed(sender: UIButton) {
+        
+        performSegueWithIdentifier("AllergySelection", sender: self)
+    }
+    
     // MARK: - Scroll View Delegate Method
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        // If the selected scrollView is the cuisinesTableView, return from the function.
-        if scrollView == cuisinesTableView {
-            return
-        }
         
         // Handles showing and hiding the left and right arrow depending on the current location in the scroll view displayed.
         
@@ -168,104 +167,6 @@ class DietCuisineViewController: UIViewController, UITableViewDelegate, UITableV
             // Scrolling is in between. Scrolling can be done in either direction.
             leftArrowWhite.hidden   = false     // Show left arrow
             rightArrowWhite.hidden  = false     // Show right arrow
-        }
-    }
-    
-    // MARK: - Add Cuisine Method
-    
-    func addCuisine(sender: AnyObject) {
-        
-        if !noCuisinesRemaining() {
-            
-            // Perform a segue to the AddCuisineViewController
-            performSegueWithIdentifier("AddCuisine", sender: self)
-        } else {
-            
-            var alertView = UIAlertView()
-            
-            alertView.title = "No Cuisines Remain!"
-            alertView.message = "There are no cuisines remaining to be added."
-            alertView.addButtonWithTitle("OK")
-            alertView.delegate = nil
-            
-            alertView.show()
-        }
-        
-    }
-    
-    // MARK: - Set Editing Method
-    
-    override func setEditing(editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        
-        cuisinesTableView.setEditing(editing, animated: animated)
-    }
-    
-    // MARK: - Data validation
-    
-    func noCuisinesRemaining() -> Bool {
-        
-        // If the count of the cuisines and allCuisines array are equivalent, no cuisines remain.
-        return appDelegate.cuisines.count == appDelegate.allCuisines.count
-    }
-    
-    // MARK: - Table view data source
-    
-    // Returns the number of sections in the TableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
-    // Returns the number of rows (or already selected cuisines)
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return appDelegate.cuisines.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("CuisineCell", forIndexPath: indexPath) as UITableViewCell
-        
-        // Configure the cell...
-        cell.textLabel!.text = appDelegate.cuisines[indexPath.row] as? String
-        
-        return cell
-    }
-    
-    // We allow each row (cuisine) of the table view to be editable, i.e., deletable.
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        return true
-    }
-    
-    // This method is invoked when the user taps the Delete button in the Edit mode.
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == .Delete { // Delete the cuisine.
-            
-            appDelegate.cuisines.removeObjectAtIndex(indexPath.row)
-        }
-        cuisinesTableView.reloadData()
-    }
-    
-    // MARK: - Unwind Segue method
-    
-    @IBAction func unwindToDietCuisineTableViewController(segue: UIStoryboardSegue) {
-        
-        if segue.identifier == "AddCuisine-Save" {
-            
-            var controller: AddCuisineViewController = segue.sourceViewController as AddCuisineViewController
-            
-            if controller.isKindOfClass(AddCuisineViewController) {
-                
-                var newCuisineName: String = controller.cuisineToAdd
-                
-                appDelegate.cuisines.addObject(newCuisineName)
-                
-                cuisinesTableView.reloadData()
-            }
-            
         }
     }
     
