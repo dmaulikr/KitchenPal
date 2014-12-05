@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // A global property to interface with the user's HealthKit database.
+    var healthStore: HKHealthStore = HKHealthStore()
     
     // An array of all allergies entered by the user.
     var allergies: NSMutableArray = NSMutableArray.alloc()
@@ -27,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dict_Allergy_AllergyQuery = NSDictionary.alloc()
     var dict_Cuisine_CuisineQuery = NSDictionary.alloc()
     var dict_Diet_DietQuery = NSDictionary.alloc()
+    var dict_NutritionAttribute_HealthKitIdentifier = NSDictionary.alloc()
+    
+    var allowableUnitSet = NSSet(array: ["g", "kcal"])
     
     var window: UIWindow?
     
@@ -131,6 +138,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Instantiate an NSMutableArray object and initialize it with the contents of the Allergies.plist file
         var allergiesDictionaryFromFileInMainBundle: NSDictionary? = NSDictionary(contentsOfFile: allergiesPlistFilePathInMainBundle!)
+        
+        var hkIdentifiersPlistFilePathInMainBundle = NSBundle.mainBundle().pathForResource("HKIdentifiers", ofType: "plist")
+        
+        self.dict_NutritionAttribute_HealthKitIdentifier = NSDictionary(contentsOfFile: hkIdentifiersPlistFilePathInMainBundle!)
 
         self.dict_Allergy_AllergyQuery = allergiesDictionaryFromFileInMainBundle!
         self.allAllergies = dict_Allergy_AllergyQuery!.allKeys
@@ -138,6 +149,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sort the arrays in alphabetical order.
         self.allAllergies.sortedArrayUsingSelector(Selector("localizedCaseInsensitiveCompare:"))
         self.allCuisines.sortedArrayUsingSelector(Selector("localizedCaseInsensitiveCompare:"))
+        
+        var types = [HKObjectType]()
+        
+        for quantityType in dict_NutritionAttribute_HealthKitIdentifier.allValues {
+            
+            types.append(HKObjectType.quantityTypeForIdentifier(quantityType as String))
+        }
+        
+        var typesToShare = NSSet(array: types)
+        
+        self.healthStore.requestAuthorizationToShareTypes(typesToShare, readTypes: nil, completion: {
+            (success, error) in
+            if success {
+                println("User completed authorisation request.")
+            } else {
+                println("The user cancelled the authorisation request. \(error)")
+            }
+        })
         
         return true
     }
