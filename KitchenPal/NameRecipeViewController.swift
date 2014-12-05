@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthKit
 
 class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     
@@ -326,7 +327,15 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     // Utilize HealthKit to add nutrition estimates to the Health app
     @IBAction func logInHealthAppPressed(sender: UIButton) {
         
+        var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
         
+        if (nutritionData.count != 0) {
+            
+            performSegueWithIdentifier("ShowNutrition", sender: self)
+        } else {
+            
+            showErrorMessageFor("Sorry, no nutrition estimates exist for this recipe!")
+        }
     }
     
     
@@ -341,6 +350,13 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
             
             // Pass the dish name and preparation step website url downstream
             controller.dataObjectPassed = dataObjectToPass
+        } else if segue.identifier == "ShowNutrition" {
+            
+            var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
+            
+            var controller: NameNutritionViewController = segue.destinationViewController as NameNutritionViewController
+            
+            controller.nutritionData = nutritionData
         }
     }
     

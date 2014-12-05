@@ -10,6 +10,8 @@ import UIKit
 
 class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
 
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     // Object references to the UI elements
     @IBOutlet var recipeImageView: UIImageView!
     @IBOutlet var recipeNameLabel: UILabel!
@@ -325,9 +327,17 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // Utilize HealthKit to add nutrition estimates to the Health app
-    @IBAction func logInHealthAppPressed(sender: UIButton) {
+    @IBAction func viewNutritionInfoPressed(sender: UIButton) {
         
+        var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
         
+        if (nutritionData.count != 0) {
+            
+            performSegueWithIdentifier("ShowNutrition", sender: self)
+        } else {
+            
+            showErrorMessageFor("Sorry, no nutrition estimates exist for this recipe!")
+        }
     }
     
     
@@ -342,6 +352,13 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
             
             // Pass the dish name and preparation step website url downstream
             controller.dataObjectPassed = dataObjectToPass
+        } else if segue.identifier == "ShowNutrition" {
+            
+            var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
+            
+            var controller: IngredientsNutritionViewController = segue.destinationViewController as IngredientsNutritionViewController
+            
+            controller.nutritionData = nutritionData
         }
     }
 
