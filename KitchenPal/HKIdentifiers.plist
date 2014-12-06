@@ -50,5 +50,7 @@
 	<string>HKQuantityTypeIdentifierDietaryVitaminK</string>
 	<key>ZN</key>
 	<string>HKQuantityTypeIdentifierDietaryZinc</string>
+	<key>ENERC_KJ</key>
+	<string>HKQuantityTypeIdentifierDietaryEnergyConsumed</string>
 </dict>
 </plist>
