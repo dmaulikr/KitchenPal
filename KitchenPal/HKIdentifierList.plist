@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryEnergyConsumed</string>
+		<string>kcal</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryFatTotal</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryFatSaturated</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryProtein</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryCarbohydrates</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietarySugar</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryFiber</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietarySodium</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryPotassium</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryVitaminA</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryVitaminB6</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryVitaminB12</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryVitaminC</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryVitaminD</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryCalcium</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryCholesterol</string>
+		<string>g</string>
+	</array>
+	<array>
+		<string>HKQuantityTypeIdentifierDietaryIron</string>
+		<string>g</string>
+	</array>
+</array>
 </plist>
