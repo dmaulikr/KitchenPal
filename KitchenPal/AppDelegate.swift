@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dict_Diet_DietQuery = NSDictionary.alloc()
     var dict_NutritionAttribute_HealthKitIdentifier = NSDictionary.alloc()
     
+    var healthKitIdentifiersArray = NSArray.alloc()
+    
     var allowableUnitSet = NSSet(array: ["g", "kcal"])
     
     var window: UIWindow?
@@ -61,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dietaryPreferencePlistFilePathInDocumentDirectory = documentDirectoryPath + "/DietaryPreference.plist"
         let cuisinePreferencesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/CuisinePreferences.plist"
         let foodAllergiesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/FoodAllergies.plist"
+        
         
         // NSMutableDictionary manages an *unordered* collection of mutable (changeable) key-value pairs.
         // Instantiate an NSMutableDictionary object and initialize it with the contents of the MyFavoriteMovies.plist file
@@ -156,6 +159,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             types.append(HKObjectType.quantityTypeForIdentifier(quantityType as String))
         }
+        
+        var hkIdentifiersArrayPlistFilePathInMainBundle = NSBundle.mainBundle().pathForResource("HKIdentifierList", ofType: "plist")
+        
+        healthKitIdentifiersArray = NSArray(contentsOfFile: hkIdentifiersArrayPlistFilePathInMainBundle!)
         
         var typesToShare = NSSet(array: types)
         
