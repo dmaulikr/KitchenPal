@@ -7,29 +7,206 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class NewRecipeViewController: UIViewController {
+class NewRecipeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    // Essential text fields
+    @IBOutlet var recipeNameTextField: UITextField!
+    @IBOutlet var prepTimeTextField: UITextField!
+    @IBOutlet var yieldTextField: UITextField!
+    @IBOutlet var ingredientsTextField: UITextField!
+    @IBOutlet var prepStepsTextView: UITextView!
+    
+    // Slider Labels
+    @IBOutlet var spicyLabel: UILabel!
+    @IBOutlet var bitterLabel: UILabel!
+    @IBOutlet var sweetLabel: UILabel!
+    @IBOutlet var savoryLabel: UILabel!
+    @IBOutlet var saltyLabel: UILabel!
+    @IBOutlet var sourLabel: UILabel!
+    
+    // Nutrition Text Fields
+    @IBOutlet var energyTextField: UITextField!
+    @IBOutlet var totalFatTextField: UITextField!
+    @IBOutlet var saturatedFatTextField: UITextField!
+    @IBOutlet var proteinTextField: UITextField!
+    @IBOutlet var carbohydratesTextField: UITextField!
+    @IBOutlet var sugarTextField: UITextField!
+    @IBOutlet var fiberTextField: UITextField!
+    @IBOutlet var sodiumTextField: UITextField!
+    @IBOutlet var potassiumTextField: UITextField!
+    @IBOutlet var vitaminATextField: UITextField!
+    @IBOutlet var vitaminB6TextField: UITextField!
+    @IBOutlet var vitaminB12TextField: UITextField!
+    @IBOutlet var vitaminCTextField: UITextField!
+    @IBOutlet var vitaminDTextField: UITextField!
+    @IBOutlet var calciumTextField: UITextField!
+    @IBOutlet var cholesterolTextField: UITextField!
+    @IBOutlet var ironTextField: UITextField!
+    
+    
+    // The slider values and labels for spicy, bitter, sweet, savory, salty, and sour respectively.
+    var sliderValues = [Float]()
+    var sliderLabels = [UILabel]()
+    var essentialTextFields = [UITextField]()
+    var optionalTextFields = [UITextField]()
+    
+    @IBOutlet var recipePicture: UIImageView?
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        // Initializing arrays
+        
+        sliderValues = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        
+        sliderLabels = [spicyLabel, bitterLabel, sweetLabel, savoryLabel, saltyLabel, sourLabel]
+        
+        essentialTextFields = [recipeNameTextField, prepTimeTextField, yieldTextField, ingredientsTextField]
+        
+        optionalTextFields = [energyTextField, totalFatTextField, saturatedFatTextField, proteinTextField, carbohydratesTextField, sugarTextField, fiberTextField, sodiumTextField, potassiumTextField, vitaminATextField, vitaminB6TextField, vitaminB12TextField, vitaminCTextField, vitaminDTextField, calciumTextField, cholesterolTextField, ironTextField]
+        
+        var saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveRecipe:")
+        self.navigationItem.rightBarButtonItem = saveButton
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        
+        let selectedImage : UIImage = image
+        recipePicture!.image = selectedImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    */
+    
+    @IBAction func captureRecipePhoto(sender: UIButton) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            
+            var imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.mediaTypes = [kUTTypeImage]
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+            
+        }
+    }
+    
+    // MARK: -  Save Recipe Pressed
+    
+    func saveRecipe(sender: AnyObject) {
+        
+        if validateData() {
+        
+            performSegueWithIdentifier("NewRecipe-Save", sender: self)
+        }
+    }
+    
+    // MARK: - Data Validation
+    
+    func validateData() -> Bool {
+        
+        for textField in essentialTextFields {
+            
+            if textField.text.isEmpty {
+                
+                showErrorMessageFor("Please fill in all non-optional text fields and try again.")
+                return false
+            }
+        }
+        
+        if prepStepsTextView.text.isEmpty {
+            
+            showErrorMessageFor("Please provide preparation steps for this recipe.")
+            return false
+        }
+        
+        if recipePicture?.image == nil {
+            
+            showErrorMessageFor("Please provide a photo for recipe.")
+            return false
+        }
+        
+        return true
+    }
+    
+    func showErrorMessageFor(error: String) {
+        
+        var alertView = UIAlertView()
+        
+        alertView.title = "Missing Information!"
+        alertView.message = error
+        alertView.delegate = nil
+        alertView.addButtonWithTitle("OK")
+        
+        alertView.show()
+    }
+    
+    // MARK: - Slider Value Changed
+    @IBAction func sliderChanged(sender: UISlider) {
+        
+        var tagNumber = sender.tag
+        
+        var sliderLabel = sliderLabels[tagNumber]
+        var sliderLabelText = sliderLabel.text!
+        var sliderTitle = sliderLabelText.componentsSeparatedByString(" ")[0]
+        
+        var sliderValue = String(format: "%.2f", sender.value)
+        
+        sliderLabel.text = "\(sliderTitle) \(sliderValue)"
+        
+        sliderValues[tagNumber] = sender.value
+    }
+    
+    // MARK: - Keyboard First Responder Methods
+    
+    // This method is invoked when the user taps the Search button on the keyboard.
+    @IBAction func keyboardDone(sender: UITextField) {
+        
+        // Hides the keyboard by resigning first responder for the selected text field
+        sender.resignFirstResponder()
+    }
+    
+    // This method removes the keyboard when the user taps anywhere on the background
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        /*
+        "A UITouch object represents the presence or movement of a finger on the screen for a particular event." [Apple]
+        We store the UITouch object's unique ID into the local variable touch.
+        */
+        var touch: UITouch = event.allTouches()?.anyObject()? as UITouch
+        
+        /*
+        When the user taps within a text field, that text field becomes the first responder.
+        When a text field becomes the first responder, the system automatically displays the keyboard.
+        */
+        
+        for textField in essentialTextFields {
+            
+            if textField.isFirstResponder() && touch.view != textField {
+                
+                textField.resignFirstResponder()
+            }
+        }
+        
+        for textField in optionalTextFields {
+            
+            if textField.isFirstResponder() && touch.view != textField {
+                
+                textField.resignFirstResponder()
+            }
+        }
+        
+        if prepStepsTextView.isFirstResponder() && touch.view != prepStepsTextView {
+            
+            prepStepsTextView.resignFirstResponder()
+        }
+        
+        super.touchesBegan(touches, withEvent: event)
+    }
 
 }
