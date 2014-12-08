@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dict_Diet_DietQuery = NSDictionary.alloc()
     var dict_NutritionAttribute_HealthKitIdentifier = NSDictionary.alloc()
     
+    var myRecipes = NSMutableArray.alloc()
+    
     var healthKitIdentifiersArray = NSArray.alloc()
     
     var allowableUnitSet = NSSet(array: ["g", "kcal"])
@@ -63,21 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dietaryPreferencePlistFilePathInDocumentDirectory = documentDirectoryPath + "/DietaryPreference.plist"
         let cuisinePreferencesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/CuisinePreferences.plist"
         let foodAllergiesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/FoodAllergies.plist"
+        let myRecipesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/MyRecipes.plist"
         
-        
-        // NSMutableDictionary manages an *unordered* collection of mutable (changeable) key-value pairs.
-        // Instantiate an NSMutableDictionary object and initialize it with the contents of the MyFavoriteMovies.plist file
         var dietFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: dietaryPreferencePlistFilePathInDocumentDirectory)
         
         var cuisinesFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: cuisinePreferencesPlistFilePathInDocumentDirectory)
         
         var allergiesFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: foodAllergiesPlistFilePathInDocumentDirectory)
         
-        /*
-        If the optional variable dictionaryFromFile has a value, then
-        MyFavoriteMovies.plist exists in the Document directory and the dictionary is successfully created
-        else read MyFavoriteMovies.plist from the application's main bundle.
-        */
+        var myRecipesFromFile: NSMutableArray? = NSMutableArray(contentsOfFile: myRecipesPlistFilePathInDocumentDirectory)
+        
+        
         if let arrayFromFileInDocumentDirectory = dietFromFile {
             
             // DietaryPreferences.plist exists in the Document directory
@@ -114,6 +112,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // FoodAllergies.plist does not exist in the Document directory; set the default allergy array to be empty.
             self.allergies = NSMutableArray()
+        }
+        
+        if let arrayFromFileInDocumentDirectory = myRecipesFromFile {
+            
+            // MyRecipes.plist exists in the Document Directory
+            self.myRecipes = arrayFromFileInDocumentDirectory
+            
+        } else {
+            
+            self.myRecipes = NSMutableArray()
         }
         
         // Obtain the file path to the Diets plist file in the mainBundle (project folder)
@@ -192,6 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dietaryPreferencePlistFilePathInDocumentDirectory = documentDirectoryPath + "/DietaryPreference.plist"
         let cuisinePreferencesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/CuisinePreferences.plist"
         let foodAllergiesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/FoodAllergies.plist"
+        let myRecipesPlistFilePathInDocumentDirectory = documentDirectoryPath + "/MyRecipes.plist"
         
         
         var dietArray: NSMutableArray = NSMutableArray()
@@ -202,6 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dietArray.writeToFile(dietaryPreferencePlistFilePathInDocumentDirectory, atomically: true)
         cuisines.writeToFile(cuisinePreferencesPlistFilePathInDocumentDirectory, atomically: true)
         allergies.writeToFile(foodAllergiesPlistFilePathInDocumentDirectory, atomically: true)
+        myRecipes.writeToFile(myRecipesPlistFilePathInDocumentDirectory, atomically: true)
         
         /*
         The flag "atomically" specifies whether the file should be written atomically or not.
