@@ -57,7 +57,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet var recipePicture: UIImageView?
     
     // Dictionary property storing the recipe infrormation (if the recipe is saved.)
-    var recipeDataDictionary = NSMutableDictionary.alloc()
+    var recipeDataDictionary = NSMutableDictionary()
     
     // MARK: - View Lifecycle
     
@@ -134,7 +134,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             
             var imageData: NSData = UIImagePNGRepresentation(recipePicture!.image)
             
-            var absoluteFilePathToSaveImage = documentDirectoryPath + fileNameInDocumentDirectory
+            var absoluteFilePathToSaveImage = documentDirectoryPath + "/\(fileNameInDocumentDirectory)"
             
             imageData.writeToFile(absoluteFilePathToSaveImage, atomically: false)
             
@@ -146,7 +146,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             
             // Store the nutrition information in the dictionary
             
-            var nutritionDict = NSMutableDictionary.alloc()
+            var nutritionDict = NSMutableDictionary()
             
             for textField in optionalTextFields {
                 
@@ -157,20 +157,18 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
                             
                         let tag = textField.tag
                             
-                        let identifier = appDelegate.healthKitIdentifiersArray[tag] as String
+                        let identifier = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(0) as String
                             
-                        recipeDataDictionary.setObject(value.doubleValue, forKey: "identifier")
+                        nutritionDict.setObject(value.doubleValue, forKey: "identifier")
                     }
                 }
-                
-                
             }
             
             recipeDataDictionary.setObject(nutritionDict, forKey: "nutrition")
             
             // Store the flavor info in the dictionary
             
-            var flavorDict = [String: Float]()
+            var flavorDict = NSMutableDictionary()
             
             for var i = 0; i < sliderValues.count; i++ {
                 
