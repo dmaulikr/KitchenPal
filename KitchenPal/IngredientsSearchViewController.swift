@@ -106,16 +106,9 @@ class IngredientsSearchViewController: UIViewController {
     
     // This method removes the keyboard when the user taps anywhere on the background
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /*
-        "A UITouch object represents the presence or movement of a finger on the screen for a particular event." [Apple]
-        We store the UITouch object's unique ID into the local variable touch.
-        */
+
         var touch: UITouch = event.allTouches()?.anyObject()? as UITouch
         
-        /*
-        When the user taps within a text field, that text field becomes the first responder.
-        When a text field becomes the first responder, the system automatically displays the keyboard.
-        */
         
         // If dishNameTextField is first responder and the user did not touch the dishNameTextField
         if ingredientsTextField.isFirstResponder() && touch.view != ingredientsTextField {
