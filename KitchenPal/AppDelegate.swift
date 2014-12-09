@@ -43,22 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        /*
-        All application-specific and user data must be written to files that reside in the iOS device's
-        Documents directory. Nothing can be written into application's main bundle (project folder) because
-        it is locked for writing after your app is published.
-        
-        The contents of the iOS device's Documents directory are backed up by iTunes during backup of an iOS device.
-        Therefore, the user can recover the data written by your app from an earlier device backup.
-        
-        The Documents directory path on an iOS device is different from the one used for iOS Simulator.
-        
-        To obtain the Documents directory path, you use the NSSearchPathForDirectoriesInDomains function.
-        However, this function was created originally for Mac OS X, where multiple such directories could exist.
-        Therefore, it returns an array of paths rather than a single path.
-        
-        For iOS, the resulting array's first element (index=0) contains the path to the Documents directory.
-        */
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentDirectoryPath = paths[0] as String
         
@@ -187,12 +171,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        /*
-        "UIApplicationWillResignActiveNotification is posted when the app is no longer active and loses focus.
-        An app is active when it is receiving events. An active app can be said to have focus.
-        It gains focus after being launched, loses focus when an overlay window pops up or when the device is
-        locked, and gains focus when the device is unlocked." [Apple]
-        */
         
         // Define the file path to the plist files in the Document directory
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -212,18 +190,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         cuisines.writeToFile(cuisinePreferencesPlistFilePathInDocumentDirectory, atomically: true)
         allergies.writeToFile(foodAllergiesPlistFilePathInDocumentDirectory, atomically: true)
         myRecipes.writeToFile(myRecipesPlistFilePathInDocumentDirectory, atomically: true)
-        
-        /*
-        The flag "atomically" specifies whether the file should be written atomically or not.
-        
-        If flag is TRUE, the dictionary is first written to an auxiliary file, and
-        then the auxiliary file is renamed to path plistFilePathInDocumentDirectory.
-        
-        If flag is FALSE, the dictionary is written directly to path plistFilePathInDocumentDirectory.
-        This is a bad idea since the file can be corrupted if the system crashes during writing.
-        
-        The TRUE option guarantees that the file will not be corrupted even if the system crashes during writing.
-        */
     }
     
 }
