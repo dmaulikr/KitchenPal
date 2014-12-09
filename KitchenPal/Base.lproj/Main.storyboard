@@ -2056,7 +2056,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARo-ya-ued" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1689" y="-2263"/>
+            <point key="canvasLocation" x="1687" y="-2105"/>
         </scene>
         <!--New Recipe View Controller-->
         <scene sceneID="gGW-dQ-3Ab">
@@ -2916,7 +2916,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGD-yi-pSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="NcU-cv-aae" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3131" y="-2619"/>
+            <point key="canvasLocation" x="3417" y="-2677"/>
         </scene>
         <!--Search by Name-->
         <scene sceneID="sci-OW-bEF">
