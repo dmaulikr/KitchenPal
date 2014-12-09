@@ -11,6 +11,9 @@ import MobileCoreServices
 
 class NewRecipeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    // Object reference to the AppDelegate object
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     // Essential text fields
     @IBOutlet var recipeNameTextField: UITextField!
     @IBOutlet var prepTimeTextField: UITextField!
@@ -71,7 +74,8 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
         
         var saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveRecipe:")
         self.navigationItem.rightBarButtonItem = saveButton
-
+        
+        self.title = "New Recipe"
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
@@ -102,7 +106,80 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     func saveRecipe(sender: AnyObject) {
         
         if validateData() {
+            
+            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let documentDirectoryPath = paths[0] as String
         
+            var recipeDataDictionary = NSMutableDictionary.alloc()
+            
+            recipeDataDictionary.setObject(recipeNameTextField.text, forKey: "name")
+            recipeDataDictionary.setObject(prepTimeTextField.text, forKey: "totalTime")
+            recipeDataDictionary.setObject(yieldTextField.text, forKey: "yield")
+            
+            // Stores each ingredient as an element in an array.
+            var ingredients: [String] = ingredientsTextField.text.componentsSeparatedByString(",")
+            
+            for var i = 0; i < ingredients.count; i++ {
+                
+                ingredients[i] = ingredients[i].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            }
+            
+            recipeDataDictionary.setObject(ingredients, forKey: "ingredientLines")
+            
+            // Save the image in the document directory
+            
+            let currentTime = NSDate()
+            
+            var fileNameInDocumentDirectory: String = "KitchenPal-\(currentTime)"
+            
+            var imageData: NSData = UIImagePNGRepresentation(recipePicture!.image)
+            
+            var absoluteFilePathToSaveImage = documentDirectoryPath + fileNameInDocumentDirectory
+            
+            imageData.writeToFile(absoluteFilePathToSaveImage, atomically: false)
+            
+            // Store the file path for the image in the recipe dictionary
+            
+            recipeDataDictionary.setObject(fileNameInDocumentDirectory, forKey: "image")
+            
+            recipeDataDictionary.setObject(prepStepsTextView.text, forKey: "preparationSteps")
+            
+            // Store the nutrition information in the dictionary
+            
+            var nutritionDict = NSMutableDictionary.alloc()
+            
+            for textField in optionalTextFields {
+                
+                if !textField.text.isEmpty {
+                    
+                    // If a number can be parsed from the string
+                    if let value = NSNumberFormatter().numberFromString(textField.text) {
+                            
+                        let tag = textField.tag
+                            
+                        let identifier = appDelegate.healthKitIdentifiersArray[tag] as String
+                            
+                        recipeDataDictionary.setObject(value.doubleValue, forKey: "identifier")
+                    }
+                }
+            }
+            
+            recipeDataDictionary.setObject(nutritionDict, forKey: "nutrition")
+            
+            // Store the flavor info in the dictionary
+            
+            var flavorDict = [String: Float]()
+            
+            for var i = 0; i < sliderValues.count; i++ {
+                
+                let flavorValue = sliderValues[i]
+                var flavorType = (sliderLabels[i].text! as String).componentsSeparatedByString(": ")[0]
+                
+                flavorDict[flavorType] = flavorValue
+            }
+            
+            recipeDataDictionary.setObject(flavorDict, forKey: "flavors")
+            
             performSegueWithIdentifier("NewRecipe-Save", sender: self)
         }
     }
@@ -139,7 +216,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
         
         var alertView = UIAlertView()
         
-        alertView.title = "Missing Information!"
+        alertView.title = "Missing Required Information!"
         alertView.message = error
         alertView.delegate = nil
         alertView.addButtonWithTitle("OK")
@@ -174,10 +251,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     
     // This method removes the keyboard when the user taps anywhere on the background
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /*
-        "A UITouch object represents the presence or movement of a finger on the screen for a particular event." [Apple]
-        We store the UITouch object's unique ID into the local variable touch.
-        */
+
         var touch: UITouch = event.allTouches()?.anyObject()? as UITouch
         
         /*
