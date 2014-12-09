@@ -2910,7 +2910,7 @@
                         <outlet property="vitaminCTextField" destination="FGU-MU-Lxq" id="vpy-5G-2Dd"/>
                         <outlet property="vitaminDTextField" destination="2d0-gB-PTP" id="E8a-GA-KXg"/>
                         <outlet property="yieldTextField" destination="VUc-ka-uDb" id="u5o-B4-Ckn"/>
-                        <segue destination="NcU-cv-aae" kind="unwind" identifier="NewRecipe-Save" unwindAction="unwindToMyRecipesViewController:" id="zuj-YC-oPU"/>
+                        <segue destination="NcU-cv-aae" kind="unwind" identifier="NewRecipe-Save" unwindAction="unwindToMyRecipesTableViewController:" id="1fY-Vb-U9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGD-yi-pSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
