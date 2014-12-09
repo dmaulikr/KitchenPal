@@ -27,30 +27,50 @@ class MyRecipesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 0
+        return appDelegate.myRecipes.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell: RecipeTableViewCell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as RecipeTableViewCell
+        
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectoryPath = paths[0] as String
 
-        // Configure the cell...
+        let row = indexPath.row
+        
+        var recipeData = appDelegate.myRecipes.objectAtIndex(row) as NSDictionary
+        
+        // Fetch the image from by using the path provided in the dictionary
+        
+        var imageName = recipeData.objectForKey("image") as String
+        
+        let imageAbsoluteFilePath = documentDirectoryPath + "/\(imageName)"
 
+        var recipeImage: UIImage? = UIImage(contentsOfFile: imageAbsoluteFilePath)
+        
+        if let imageForRecipe = recipeImage {
+            
+            cell.recipeImageView.image = recipeImage
+        }
+        
+        let recipeName = recipeData.objectForKey("name") as String
+        let prepTime = recipeData.objectForKey("totalTime") as String
+        
+        cell.recipeName.text = recipeName
+        cell.recipeRating.text = prepTime
+        
         return cell
     }
-    */
 
     /*
-    // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+        
         return true
     }
     */
@@ -66,21 +86,6 @@ class MyRecipesTableViewController: UITableViewController {
         }    
     }
     */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     // MARK: - New Recipe Pressed 
     
@@ -91,21 +96,20 @@ class MyRecipesTableViewController: UITableViewController {
     
     // MARK: - Unwind to MyRecipes
     
-    @IBAction func unwindToMyRecipesViewController(segue: UIStoryboardSegue) {
+    @IBAction func unwindToMyRecipesTableViewController(segue: UIStoryboardSegue) {
         
-        if segue.sourceViewController.identifier == "NewRecipe-Save" {
+        if segue.identifier == "NewRecipe-Save" {
             
             var controller: NewRecipeViewController = segue.sourceViewController as NewRecipeViewController
             
-            appDelegate.myRecipes.addObject(controller.recipeDataDictionary)
+            if controller.isKindOfClass(NewRecipeViewController) {
+            
+                appDelegate.myRecipes.addObject(controller.recipeDataDictionary)
+                
+                self.tableView.reloadData()
+            }
+            
         }
-    }
-
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
-        
     }
 
 }
