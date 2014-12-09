@@ -9,20 +9,19 @@
 import UIKit
 
 class MyRecipesTableViewController: UITableViewController {
-
+    
+    // Object reference to the AppDelegate object
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "newRecipe:")
+        
+        self.navigationItem.rightBarButtonItem = addButton
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
     }
 
     // MARK: - Table view data source
@@ -34,8 +33,7 @@ class MyRecipesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+
         return 0
     }
 
@@ -83,15 +81,31 @@ class MyRecipesTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - New Recipe Pressed 
+    
+    func newRecipe(sender: AnyObject) {
+        
+        performSegueWithIdentifier("NewRecipe", sender: self)
+    }
+    
+    // MARK: - Unwind to MyRecipes
+    
+    @IBAction func unwindToMyRecipesViewController(segue: UIStoryboardSegue) {
+        
+        if segue.sourceViewController.identifier == "NewRecipe-Save" {
+            
+            var controller: NewRecipeViewController = segue.sourceViewController as NewRecipeViewController
+            
+            appDelegate.myRecipes.addObject(controller.recipeDataDictionary)
+        }
+    }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+
+        
     }
-    */
 
 }

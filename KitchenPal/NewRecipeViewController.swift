@@ -48,7 +48,6 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet var cholesterolTextField: UITextField!
     @IBOutlet var ironTextField: UITextField!
     
-    
     // The slider values and labels for spicy, bitter, sweet, savory, salty, and sour respectively.
     var sliderValues = [Float]()
     var sliderLabels = [UILabel]()
@@ -56,6 +55,9 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     var optionalTextFields = [UITextField]()
     
     @IBOutlet var recipePicture: UIImageView?
+    
+    // Dictionary property storing the recipe infrormation (if the recipe is saved.)
+    var recipeDataDictionary = NSMutableDictionary.alloc()
     
     // MARK: - View Lifecycle
     
@@ -109,8 +111,6 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             
             let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             let documentDirectoryPath = paths[0] as String
-        
-            var recipeDataDictionary = NSMutableDictionary.alloc()
             
             recipeDataDictionary.setObject(recipeNameTextField.text, forKey: "name")
             recipeDataDictionary.setObject(prepTimeTextField.text, forKey: "totalTime")
@@ -162,6 +162,8 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
                         recipeDataDictionary.setObject(value.doubleValue, forKey: "identifier")
                     }
                 }
+                
+                
             }
             
             recipeDataDictionary.setObject(nutritionDict, forKey: "nutrition")
