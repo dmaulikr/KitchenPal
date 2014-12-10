@@ -27,6 +27,8 @@ class MyRecipeNutritionViewController: UIViewController {
         
         self.title = "Nutrition Information"
         
+        nutritionTextView.font = UIFont(name: "Helvetica", size: 17.0)
+        
         var allNutritionDataAsText: String = ""
         
         for quantityType in nutritionDict!.allKeys {
@@ -34,13 +36,13 @@ class MyRecipeNutritionViewController: UIViewController {
             // All quantityType keys begin with "HKQuantityTypeIdentifierDietary" 
             // Create a substring beginning from index 30
             
-            let index: String.Index = advance((quantityType as String).startIndex, 30)
+            let index: String.Index = advance((quantityType as String).startIndex, 31)
             
             var descriptionText = (quantityType as String).substringFromIndex(index)
             
             descriptionText += ":"
             
-            var valueAndUnit = nutritionDict!.objectForKey(quantityType) as NSArray
+            var valueAndUnit = nutritionDict!.objectForKey(quantityType as String) as NSArray
             
             var units: String = valueAndUnit.objectAtIndex(1) as String
             
@@ -73,9 +75,6 @@ class MyRecipeNutritionViewController: UIViewController {
             var quantity: HKQuantity = HKQuantity(unit: unit, doubleValue: value)
             
             var nutritionObject = HKQuantitySample(type: nutritionType!, quantity: quantity, startDate: NSDate(), endDate: NSDate())
-            
-            println(quantity)
-            println(nutritionType!)
             
             appDelegate.healthStore.saveObject(nutritionObject, withCompletion: nil)
         }
