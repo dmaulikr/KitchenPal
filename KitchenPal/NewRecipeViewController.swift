@@ -154,8 +154,9 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
                     
                     // If a number can be parsed from the string
                     if let value = NSNumberFormatter().numberFromString(textField.text) {
-                            
-                        let tag = textField.tag
+                        
+                        // Subtracts 1 due to tag 0 being associated with all other text field
+                        let tag = textField.tag - 1
                             
                         let identifier = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(0) as String
                         
