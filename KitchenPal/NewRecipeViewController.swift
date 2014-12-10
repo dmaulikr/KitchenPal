@@ -158,8 +158,10 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
                         let tag = textField.tag
                             
                         let identifier = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(0) as String
+                        
+                        let unit = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(1) as String
                             
-                        nutritionDict.setObject(value.doubleValue, forKey: "identifier")
+                        nutritionDict.setObject([value.doubleValue, unit], forKey: identifier)
                     }
                 }
             }
