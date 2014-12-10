@@ -4361,10 +4361,10 @@
             </objects>
             <point key="canvasLocation" x="800" y="-2105"/>
         </scene>
-        <!--Name Recipe View Controller-->
+        <!--View My Recipe View Controller-->
         <scene sceneID="zfk-qD-E5m">
             <objects>
-                <viewController id="f9R-Mg-i9e" customClass="NameRecipeViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f9R-Mg-i9e" customClass="ViewMyRecipeViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZRE-Q7-wUs"/>
                         <viewControllerLayoutGuide type="bottom" id="ADT-Of-h64"/>
@@ -4658,7 +4658,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <action selector="logInHealthAppPressed:" destination="f9R-Mg-i9e" eventType="touchUpInside" id="Ie7-aR-PEJ"/>
+                                            <action selector="viewNutritionInfoPressed:" destination="f9R-Mg-i9e" eventType="touchUpInside" id="8SM-RF-VFp"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Preparation Steps" translatesAutoresizingMaskIntoConstraints="NO" id="jcT-oe-WsK">
@@ -4918,23 +4918,24 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
-                        <outlet property="bitterFlavorLabel" destination="aBH-GU-FDx" id="K5M-Hj-ILG"/>
-                        <outlet property="bitterFlavorSlider" destination="ky9-j3-2qG" id="kc3-MU-7oB"/>
-                        <outlet property="ingredientsListTextView" destination="aIy-B6-nuz" id="kFG-cL-OVT"/>
-                        <outlet property="meatyFlavorLabel" destination="euH-26-IlI" id="XK2-qE-zKk"/>
-                        <outlet property="meatyFlavorSlider" destination="P1d-tF-Jvc" id="w44-ys-pMf"/>
-                        <outlet property="piquantFlavorLabel" destination="3YX-K6-lhJ" id="AVP-is-K9l"/>
-                        <outlet property="piquantFlavorSlider" destination="A0n-bs-UjN" id="ptP-VK-Qhi"/>
-                        <outlet property="recipeImageView" destination="AYe-8X-hUE" id="dr4-81-FFJ"/>
-                        <outlet property="recipeNameLabel" destination="UgB-Cn-yiK" id="gRw-4r-YLd"/>
-                        <outlet property="recipeYieldLabel" destination="QGk-2V-niY" id="suc-ki-zLe"/>
-                        <outlet property="saltyFlavorLabel" destination="EGw-ot-BXR" id="XFo-m7-i6u"/>
-                        <outlet property="saltyFlavorSlider" destination="1bR-aJ-HiT" id="FoE-zn-AUJ"/>
-                        <outlet property="sourFlavorLabel" destination="cGt-Zh-cSO" id="MIi-LO-gTM"/>
-                        <outlet property="sourFlavorSlider" destination="usB-ZT-r5S" id="Qej-9a-Nac"/>
-                        <outlet property="sweetFlavorLabel" destination="Ggg-hi-kbr" id="WcH-CR-lLL"/>
-                        <outlet property="sweetFlavorSlider" destination="PVw-gO-Zhl" id="7gC-dv-pT9"/>
-                        <outlet property="totalPrepTimeLabel" destination="A3P-BX-D74" id="eXB-cu-1Fg"/>
+                        <outlet property="bitterLabel" destination="aBH-GU-FDx" id="KI3-rX-6gm"/>
+                        <outlet property="bitterSlider" destination="ky9-j3-2qG" id="Rdx-0a-puj"/>
+                        <outlet property="ingredientsTextView" destination="aIy-B6-nuz" id="BcV-pF-3Cn"/>
+                        <outlet property="prepStepsTextView" destination="jcT-oe-WsK" id="WKs-my-gnf"/>
+                        <outlet property="recipeImageView" destination="AYe-8X-hUE" id="EoF-hY-fA5"/>
+                        <outlet property="recipeNameLabel" destination="UgB-Cn-yiK" id="8sD-bC-aSD"/>
+                        <outlet property="saltyLabel" destination="EGw-ot-BXR" id="uNY-d5-dkR"/>
+                        <outlet property="saltySlider" destination="1bR-aJ-HiT" id="TPE-UO-EiP"/>
+                        <outlet property="savoryLabel" destination="euH-26-IlI" id="k4S-cv-G56"/>
+                        <outlet property="savorySlider" destination="P1d-tF-Jvc" id="fdP-hM-7eU"/>
+                        <outlet property="sourLabel" destination="cGt-Zh-cSO" id="fbv-0R-OS3"/>
+                        <outlet property="sourSlider" destination="usB-ZT-r5S" id="6IX-ml-AHh"/>
+                        <outlet property="spicyLabel" destination="3YX-K6-lhJ" id="R2p-1a-19S"/>
+                        <outlet property="spicySlider" destination="A0n-bs-UjN" id="CVz-Im-hC0"/>
+                        <outlet property="sweetLabel" destination="Ggg-hi-kbr" id="Njh-DL-b8n"/>
+                        <outlet property="sweetSlider" destination="PVw-gO-Zhl" id="cir-wl-d6N"/>
+                        <outlet property="totalTimeLabel" destination="A3P-BX-D74" id="K5Z-Ia-TSY"/>
+                        <outlet property="yieldLabel" destination="QGk-2V-niY" id="v1w-lC-Lis"/>
                         <segue destination="tA7-ms-9Zi" kind="show" identifier="ShowNutrition" id="qrw-yW-mv6"/>
                     </connections>
                 </viewController>
@@ -4942,10 +4943,10 @@
             </objects>
             <point key="canvasLocation" x="2401" y="-3849"/>
         </scene>
-        <!--Name Nutrition View Controller-->
+        <!--My Recipe Nutrition View Controller-->
         <scene sceneID="8yV-q9-mn1">
             <objects>
-                <viewController id="tA7-ms-9Zi" customClass="NameNutritionViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tA7-ms-9Zi" customClass="MyRecipeNutritionViewController" customModule="KitchenPal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hak-k7-iw3"/>
                         <viewControllerLayoutGuide type="bottom" id="N8f-3L-B1Y"/>
@@ -4966,7 +4967,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logInHealthAppPressed:" destination="tA7-ms-9Zi" eventType="touchUpInside" id="6K5-jA-QVX"/>
+                                    <action selector="logInHealthAppPressed:" destination="tA7-ms-9Zi" eventType="touchUpInside" id="aEv-Nc-Scm"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Nutrition Information Here" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBf-zH-V44">
@@ -4990,6 +4991,7 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="nutritionInfoTextView" destination="FBf-zH-V44" id="n6r-vB-1iC"/>
+                        <outlet property="nutritionTextView" destination="FBf-zH-V44" id="Ni4-rF-PeW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMb-c7-eA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
