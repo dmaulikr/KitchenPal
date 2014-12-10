@@ -80,9 +80,6 @@ class IngredientsNutritionViewController: UIViewController {
                 
                 var nutritionObject = HKQuantitySample(type: nutritionType!, quantity: quantity, startDate: NSDate(), endDate: NSDate())
                 
-                println(quantity)
-                println(nutritionType!)
-                
                 appDelegate.healthStore.saveObject(nutritionObject, withCompletion: nil)
                 
             }
