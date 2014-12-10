@@ -10,6 +10,8 @@ import UIKit
 
 class MyRecipesTableViewController: UITableViewController {
     
+    let tableViewRowHeight: CGFloat = 80.0
+    
     // Object reference to the AppDelegate object
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
@@ -21,7 +23,7 @@ class MyRecipesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "newRecipe:")
         
         self.navigationItem.rightBarButtonItem = addButton
@@ -29,25 +31,25 @@ class MyRecipesTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
+        
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return appDelegate.myRecipes.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RecipeTableViewCell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as RecipeTableViewCell
         
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentDirectoryPath = paths[0] as String
-
+        
         let row = indexPath.row
         
         var recipeData = appDelegate.myRecipes.objectAtIndex(row) as NSDictionary
@@ -57,7 +59,7 @@ class MyRecipesTableViewController: UITableViewController {
         var imageName = recipeData.objectForKey("image") as String
         
         let imageAbsoluteFilePath = documentDirectoryPath + "/\(imageName)"
-
+        
         var recipeImage: UIImage? = UIImage(contentsOfFile: imageAbsoluteFilePath)
         
         if let imageForRecipe = recipeImage {
@@ -75,12 +77,12 @@ class MyRecipesTableViewController: UITableViewController {
     }
     
     // MARK: - Table View Delegate
-
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
         return true
     }
-
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -123,6 +125,12 @@ class MyRecipesTableViewController: UITableViewController {
         performSegueWithIdentifier("ShowRecipe", sender: self)
     }
     
+    // Asks the table view delegate to return the given height of a row
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return tableViewRowHeight
+    }
+    
     // MARK: - Show Error Message
     
     func showErrorMessage(errorMessage: String) {
@@ -137,7 +145,7 @@ class MyRecipesTableViewController: UITableViewController {
         alertView.show()
     }
     
-    // MARK: - New Recipe Pressed 
+    // MARK: - New Recipe Pressed
     
     func newRecipe(sender: AnyObject) {
         
@@ -153,7 +161,7 @@ class MyRecipesTableViewController: UITableViewController {
             var controller: NewRecipeViewController = segue.sourceViewController as NewRecipeViewController
             
             if controller.isKindOfClass(NewRecipeViewController) {
-            
+                
                 appDelegate.myRecipes.addObject(controller.recipeDataDictionary)
                 
                 self.tableView.reloadData()
@@ -161,7 +169,7 @@ class MyRecipesTableViewController: UITableViewController {
             
         }
     }
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
