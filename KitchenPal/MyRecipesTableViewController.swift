@@ -13,6 +13,12 @@ class MyRecipesTableViewController: UITableViewController {
     // Object reference to the AppDelegate object
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
+    var fileRemoveError: NSError?
+    
+    var selectedRecipe: NSDictionary?
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,25 +73,69 @@ class MyRecipesTableViewController: UITableViewController {
         
         return cell
     }
+    
+    // MARK: - Table View Delegate
 
-    /*
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            
+            // Gets the document directory path to
+            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let documentDirectoryPath = paths[0] as String
+            
+            let rowNumber = indexPath.row
+            
+            // Grab the image file path from the recipe data dictionary and remove the data from
+            // myRecipes in the appDelegate
+            var recipeData = appDelegate.myRecipes.objectAtIndex(rowNumber) as NSDictionary
+            appDelegate.myRecipes.removeObjectAtIndex(rowNumber)
+            
+            var imageFilePathExtension = recipeData.objectForKey("image") as String
+            
+            let imageFilePath = documentDirectoryPath + "/\(imageFilePathExtension)"
+            
+            let fileManager = NSFileManager.defaultManager()
+            
+            let didSucceed = fileManager.removeItemAtPath(imageFilePath, error: &fileRemoveError)
+            
+            if (!didSucceed) {
+                
+                showErrorMessage("Error in deleting file: \(fileRemoveError!.localizedDescription)")
+            }
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let rowNumber = indexPath.row
+        
+        selectedRecipe = appDelegate.myRecipes.objectAtIndex(rowNumber) as? NSDictionary
+        
+        performSegueWithIdentifier("ShowRecipe", sender: self)
+    }
+    
+    // MARK: - Show Error Message
+    
+    func showErrorMessage(errorMessage: String) {
+        
+        var alertView = UIAlertView()
+        
+        alertView.title = "Unable to Delete Recipe Image"
+        alertView.message = errorMessage
+        alertView.addButtonWithTitle("OK")
+        alertView.delegate = nil
+        
+        alertView.show()
+    }
     
     // MARK: - New Recipe Pressed 
     
@@ -112,4 +162,14 @@ class MyRecipesTableViewController: UITableViewController {
         }
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowRecipe" {
+            
+            var controller: ViewMyRecipeViewController = segue.destinationViewController as ViewMyRecipeViewController
+            
+            controller.recipeData = selectedRecipe
+        }
+    }
 }
