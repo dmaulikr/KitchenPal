@@ -7,6 +7,26 @@
 //
 
 import UIKit
+import Darwin
+
+extension UIImage {
+    
+    func normalizedImage() -> UIImage {
+        
+        // If the image is already in the correct orientation, return it.
+        if self.imageOrientation == UIImageOrientation.Up {
+            
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        
+        self.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+        var normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalizedImage
+    }
+}
 
 class ViewMyRecipeViewController: UIViewController {
 
@@ -57,8 +77,9 @@ class ViewMyRecipeViewController: UIViewController {
         
         // Set the recipe image
         var recipeImagePath = documentDirectoryPath + "/" + (recipeData?.objectForKey("image") as String)
-        var recipeImage = UIImage(contentsOfFile: recipeImagePath)
-        recipeImageView.image = recipeImage
+        var recipeImageData = NSData(contentsOfFile: recipeImagePath)
+        var recipeImage = UIImage(data: recipeImageData!)
+        recipeImageView.image = recipeImage!.normalizedImage()
         
         // Set the ingredients list
         var ingredientsArray = recipeData!.objectForKey("ingredientLines") as [String]
