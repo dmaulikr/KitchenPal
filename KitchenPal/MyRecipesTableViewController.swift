@@ -10,7 +10,7 @@ import UIKit
 
 class MyRecipesTableViewController: UITableViewController {
     
-    let tableViewRowHeight: CGFloat = 80.0
+    let tableViewRowHeight: CGFloat = 120.0
     
     // Object reference to the AppDelegate object
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -60,18 +60,19 @@ class MyRecipesTableViewController: UITableViewController {
         
         let imageAbsoluteFilePath = documentDirectoryPath + "/\(imageName)"
         
-        var recipeImage: UIImage? = UIImage(contentsOfFile: imageAbsoluteFilePath)
+        var recipeImageData = NSData(contentsOfFile: imageAbsoluteFilePath)
         
-        if let imageForRecipe = recipeImage {
+        if let imageDataForRecipe = recipeImageData {
             
-            cell.recipeImageView.image = recipeImage
+            let image = UIImage(data: imageDataForRecipe)
+            cell.recipeImageView.image = image!.normalizedImage()
         }
         
         let recipeName = recipeData.objectForKey("name") as String
         let prepTime = recipeData.objectForKey("totalTime") as String
         
         cell.recipeName.text = recipeName
-        cell.recipeRating.text = prepTime
+        cell.recipeRating.text = "Prep time: \(prepTime) minutes"
         
         return cell
     }
