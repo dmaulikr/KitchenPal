@@ -18,10 +18,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="331-1R-GoO" kind="relationship" relationship="viewControllers" id="wCW-g3-MQE"/>
                         <segue destination="ReK-sb-Bfd" kind="relationship" relationship="viewControllers" id="Yn7-Rr-V8A"/>
                         <segue destination="PFL-BH-EUF" kind="relationship" relationship="viewControllers" id="JRm-T4-uM9"/>
                         <segue destination="HeU-th-aZN" kind="relationship" relationship="viewControllers" id="az2-Iq-m4A"/>
-                        <segue destination="331-1R-GoO" kind="relationship" relationship="viewControllers" id="wCW-g3-MQE"/>
                         <segue destination="Q70-KN-T1v" kind="relationship" relationship="viewControllers" id="D7g-Eb-2Lq"/>
                     </connections>
                 </tabBarController>
@@ -2931,11 +2931,11 @@
             </objects>
             <point key="canvasLocation" x="3417" y="-2677"/>
         </scene>
-        <!--Search by Name-->
+        <!--Name Search-->
         <scene sceneID="sci-OW-bEF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ReK-sb-Bfd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search by Name" id="nCd-yW-l8W"/>
+                    <tabBarItem key="tabBarItem" title="Name Search" image="Search" id="nCd-yW-l8W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaN-zz-eNC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2950,11 +2950,11 @@
             </objects>
             <point key="canvasLocation" x="808" y="-1315"/>
         </scene>
-        <!--Search by Ingredients-->
+        <!--Ingredients Search-->
         <scene sceneID="Vhn-cy-bKP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PFL-BH-EUF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search by Ingredients" id="fPe-0F-IJ1"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients Search" image="Search" id="fPe-0F-IJ1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tfv-bc-rsK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2969,11 +2969,11 @@
             </objects>
             <point key="canvasLocation" x="808" y="-521"/>
         </scene>
-        <!--Search by Flavor-->
+        <!--Flavor Search-->
         <scene sceneID="K5h-74-d8m">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HeU-th-aZN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search by Flavor" id="QRu-Bh-5wA"/>
+                    <tabBarItem key="tabBarItem" title="Flavor Search" image="Search" id="QRu-Bh-5wA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LB6-Wo-WpM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3205,7 +3205,7 @@
         <scene sceneID="ZyF-ng-zu5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q70-KN-T1v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Preferences" id="dG9-JE-gub"/>
+                    <tabBarItem key="tabBarItem" title="Preferences" image="Preferences" id="dG9-JE-gub"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bBe-MS-n6x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -4359,7 +4359,7 @@
         <scene sceneID="XZw-2D-ttH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="331-1R-GoO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Recipes" id="HFh-Lw-nYx"/>
+                    <tabBarItem key="tabBarItem" title="My Recipes" image="MyRecipes" id="HFh-Lw-nYx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dId-99-gbX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -5014,6 +5014,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MyRecipes" width="30" height="30"/>
+        <image name="Preferences" width="30" height="30"/>
+        <image name="Search" width="30" height="30"/>
         <image name="leftArrowWhite" width="10" height="20"/>
         <image name="rightArrowWhite" width="10" height="20"/>
     </resources>
