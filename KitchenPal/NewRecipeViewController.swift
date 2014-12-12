@@ -83,7 +83,9 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         let selectedImage : UIImage = image
+        
         recipePicture!.image = selectedImage
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -132,11 +134,11 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             
             var fileNameInDocumentDirectory: String = "KitchenPal-\(currentTime)"
             
-            var imageData: NSData = UIImagePNGRepresentation(recipePicture!.image)
+            var imageData: NSData = UIImageJPEGRepresentation(recipePicture!.image, 0.9)
             
             var absoluteFilePathToSaveImage = documentDirectoryPath + "/\(fileNameInDocumentDirectory)"
             
-            imageData.writeToFile(absoluteFilePathToSaveImage, atomically: false)
+            imageData.writeToFile(absoluteFilePathToSaveImage, atomically: true)
             
             // Store the file path for the image in the recipe dictionary
             
