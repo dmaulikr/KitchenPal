@@ -39,9 +39,11 @@
 		31D36E501A0FC15800364852 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D36E4F1A0FC15800364852 /* Images.xcassets */; };
 		31D36E531A0FC15800364852 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31D36E511A0FC15800364852 /* LaunchScreen.xib */; };
 		31D36E5F1A0FC15800364852 /* KitchenPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D36E5E1A0FC15800364852 /* KitchenPalTests.swift */; };
+		31D7EC4F1A3890B000930CDD /* MyRecipeNutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7EC4E1A3890B000930CDD /* MyRecipeNutritionViewController.swift */; };
 		31FD92F81A3163B500A25E98 /* NameNutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD92F71A3163B500A25E98 /* NameNutritionViewController.swift */; };
 		31FD92FA1A3163CF00A25E98 /* FlavorNutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD92F91A3163CF00A25E98 /* FlavorNutritionViewController.swift */; };
 		31FD92FE1A3269E400A25E98 /* CuisineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD92FD1A3269E400A25E98 /* CuisineTableViewController.swift */; };
+		31FF01661A388FB900F9ADCC /* ViewMyRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF01651A388FB900F9ADCC /* ViewMyRecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,9 +94,11 @@
 		31D36E581A0FC15800364852 /* KitchenPalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KitchenPalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D36E5D1A0FC15800364852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D36E5E1A0FC15800364852 /* KitchenPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenPalTests.swift; sourceTree = "<group>"; };
+		31D7EC4E1A3890B000930CDD /* MyRecipeNutritionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipeNutritionViewController.swift; sourceTree = "<group>"; };
 		31FD92F71A3163B500A25E98 /* NameNutritionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameNutritionViewController.swift; sourceTree = "<group>"; };
 		31FD92F91A3163CF00A25E98 /* FlavorNutritionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlavorNutritionViewController.swift; sourceTree = "<group>"; };
 		31FD92FD1A3269E400A25E98 /* CuisineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineTableViewController.swift; sourceTree = "<group>"; };
+		31FF01651A388FB900F9ADCC /* ViewMyRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMyRecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,8 @@
 			children = (
 				319F36191A3272B2004F6F84 /* MyRecipesTableViewController.swift */,
 				319F361B1A327433004F6F84 /* NewRecipeViewController.swift */,
+				31FF01651A388FB900F9ADCC /* ViewMyRecipeViewController.swift */,
+				31D7EC4E1A3890B000930CDD /* MyRecipeNutritionViewController.swift */,
 			);
 			name = "My Recipes";
 			sourceTree = "<group>";
@@ -383,8 +389,10 @@
 				31FD92F81A3163B500A25E98 /* NameNutritionViewController.swift in Sources */,
 				31C9A1881A2C0398007C0905 /* IngredientsWebViewController.swift in Sources */,
 				3175DB921A23B59D0084176F /* RecipeTableViewCell.swift in Sources */,
+				31FF01661A388FB900F9ADCC /* ViewMyRecipeViewController.swift in Sources */,
 				31C9A1821A2C0354007C0905 /* IngredientsSearchViewController.swift in Sources */,
 				31FD92FE1A3269E400A25E98 /* CuisineTableViewController.swift in Sources */,
+				31D7EC4F1A3890B000930CDD /* MyRecipeNutritionViewController.swift in Sources */,
 				31C9A18C1A2C0DC6007C0905 /* FlavorSearchTableViewController.swift in Sources */,
 				3175DB901A23B4D20084176F /* NameWebViewController.swift in Sources */,
 				31FD92FA1A3163CF00A25E98 /* FlavorNutritionViewController.swift in Sources */,
