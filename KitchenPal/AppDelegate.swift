@@ -114,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             
-            self.myRecipes = NSMutableArray.alloc()
+            self.myRecipes = NSMutableArray()
         }
         
         // Obtain the file path to the Diets plist file in the mainBundle (project folder)

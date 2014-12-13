@@ -1125,13 +1125,11 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL3-Ry-ara">
                                         <rect key="frame" x="260" y="951" width="80" height="44"/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="lVc-jb-DZl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Search">
-                                            <color key="titleColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -2640,7 +2638,7 @@
                                                     <action selector="keyboardDone:" destination="waJ-m4-ePL" eventType="editingDidEndOnExit" id="z9C-CN-3WV"/>
                                                 </connections>
                                             </textField>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lUu-WZ-Pgz">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageUnavailable" translatesAutoresizingMaskIntoConstraints="NO" id="lUu-WZ-Pgz">
                                                 <rect key="frame" x="225" y="387" width="204" height="272"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="204" id="0sO-UY-4Mt"/>
@@ -3080,7 +3078,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6d-GR-E5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150" y="2008"/>
+            <point key="canvasLocation" x="1126" y="1720"/>
         </scene>
         <!--Add Cuisine View Controller-->
         <scene sceneID="yg4-OK-Bad">
@@ -3168,7 +3166,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEK-NH-y6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307" y="2049"/>
+            <point key="canvasLocation" x="311" y="1720"/>
         </scene>
         <!--Ingredients Web View Controller-->
         <scene sceneID="fni-FC-R8N">
@@ -3246,7 +3244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkE-EB-his" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3829" y="1250"/>
+            <point key="canvasLocation" x="3887" y="1250"/>
         </scene>
         <!--Ingredients Recipe View Controller-->
         <scene sceneID="B7W-yG-aOb">
@@ -4116,7 +4114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UH-AR-Ofc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2326" y="359"/>
+            <point key="canvasLocation" x="2354" y="617"/>
         </scene>
         <!--Name Nutrition View Controller-->
         <scene sceneID="kTa-nT-ffN">
@@ -4251,7 +4249,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXs-Py-mPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="2709"/>
+            <point key="canvasLocation" x="1859" y="2525"/>
         </scene>
         <!--Add Allergy View Controller-->
         <scene sceneID="d7v-lL-hLw">
@@ -4291,7 +4289,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUT-vk-GXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5xG-v3-d7j" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2751" y="2709"/>
+            <point key="canvasLocation" x="2815" y="2525"/>
         </scene>
         <!--My Recipes-->
         <scene sceneID="XZw-2D-ttH">
@@ -4951,6 +4949,7 @@
         <image name="MyRecipes" width="30" height="30"/>
         <image name="Preferences" width="30" height="30"/>
         <image name="Search" width="30" height="30"/>
+        <image name="imageUnavailable" width="150" height="124"/>
         <image name="leftArrowWhite" width="10" height="20"/>
         <image name="rightArrowWhite" width="10" height="20"/>
     </resources>
