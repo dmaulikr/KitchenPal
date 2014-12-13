@@ -31,6 +31,8 @@ class MyRecipeNutritionViewController: UIViewController {
         
         var allNutritionDataAsText: String = ""
         
+        // Appends the nutrition information to a string to be displayed in the text view
+        
         for quantityType in nutritionDict!.allKeys {
             
             // All quantityType keys begin with "HKQuantityTypeIdentifierDietary" 
@@ -59,6 +61,7 @@ class MyRecipeNutritionViewController: UIViewController {
     
     // MARK: - Log In Health App Button Pressed
     
+    // Store the nutrition information in the user's HealthKit using this app's HealthStore object
     @IBAction func logInHealthAppPressed(sender: UIButton) {
         
         for quantityType in nutritionDict!.allKeys {

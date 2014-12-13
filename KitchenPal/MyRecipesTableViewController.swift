@@ -41,18 +41,19 @@ class MyRecipesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return appDelegate.myRecipes.count
+        return appDelegate.myRecipes!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RecipeTableViewCell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as RecipeTableViewCell
         
+        // Gets the path to the user's document directory
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentDirectoryPath = paths[0] as String
         
         let row = indexPath.row
         
-        var recipeData = appDelegate.myRecipes.objectAtIndex(row) as NSDictionary
+        var recipeData = appDelegate.myRecipes!.objectAtIndex(row) as NSDictionary
         
         // Fetch the image from by using the path provided in the dictionary
         
@@ -87,6 +88,7 @@ class MyRecipesTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
+        // Deletes the recipe from myRecipes AND deletes the recipe picture from the Document Directory
         if editingStyle == .Delete {
             
             // Gets the document directory path to
@@ -97,8 +99,8 @@ class MyRecipesTableViewController: UITableViewController {
             
             // Grab the image file path from the recipe data dictionary and remove the data from
             // myRecipes in the appDelegate
-            var recipeData = appDelegate.myRecipes.objectAtIndex(rowNumber) as NSDictionary
-            appDelegate.myRecipes.removeObjectAtIndex(rowNumber)
+            var recipeData = appDelegate.myRecipes!.objectAtIndex(rowNumber) as NSDictionary
+            appDelegate.myRecipes!.removeObjectAtIndex(rowNumber)
             
             var imageFilePathExtension = recipeData.objectForKey("image") as String
             
@@ -117,11 +119,12 @@ class MyRecipesTableViewController: UITableViewController {
         }
     }
     
+    // Display the selected recipe
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let rowNumber = indexPath.row
         
-        selectedRecipe = appDelegate.myRecipes.objectAtIndex(rowNumber) as? NSDictionary
+        selectedRecipe = appDelegate.myRecipes!.objectAtIndex(rowNumber) as? NSDictionary
         
         performSegueWithIdentifier("ShowRecipe", sender: self)
     }
@@ -163,7 +166,8 @@ class MyRecipesTableViewController: UITableViewController {
             
             if controller.isKindOfClass(NewRecipeViewController) {
                 
-                appDelegate.myRecipes.addObject(controller.recipeDataDictionary)
+                // Store the new recipe in the myRecipes array stored in the AppDelegate
+                appDelegate.myRecipes!.addObject(controller.recipeDataDictionary)
                 
                 self.tableView.reloadData()
             }
@@ -178,6 +182,7 @@ class MyRecipesTableViewController: UITableViewController {
             
             var controller: ViewMyRecipeViewController = segue.destinationViewController as ViewMyRecipeViewController
             
+            // Pass the recipe data to the downstream view controller
             controller.recipeData = selectedRecipe
         }
     }

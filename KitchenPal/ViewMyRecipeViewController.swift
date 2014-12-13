@@ -11,6 +11,7 @@ import Darwin
 
 extension UIImage {
     
+    // Returns a normalized (in the correct orientation and size) version of the image
     func normalizedImage() -> UIImage {
         
         // If the image is already in the correct orientation, return it.
@@ -125,6 +126,7 @@ class ViewMyRecipeViewController: UIViewController {
     
     // MARK: - View Nutition Info Pressed
     
+    // Display the recipes nutrition data
     @IBAction func viewNutritionInfoPressed(sender: UIButton) {
         
         performSegueWithIdentifier("ShowNutrition", sender: self)

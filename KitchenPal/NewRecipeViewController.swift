@@ -63,15 +63,17 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Initializing arrays
         
+        // Initialize sliderValues to 0.0
         sliderValues = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         
+        // Store references for sliders in array to allow retrieval using slider tags
         sliderLabels = [spicyLabel, bitterLabel, sweetLabel, savoryLabel, saltyLabel, sourLabel]
         
+        // stores references to essential text fields in array to allow easy iteration
         essentialTextFields = [recipeNameTextField, prepTimeTextField, yieldTextField, ingredientsTextField]
         
+        // Stores the optional text fields in an array to allow easy iteration, and access using the text field tags.
         optionalTextFields = [energyTextField, totalFatTextField, saturatedFatTextField, proteinTextField, carbohydratesTextField, sugarTextField, fiberTextField, sodiumTextField, potassiumTextField, vitaminATextField, vitaminB6TextField, vitaminB12TextField, vitaminCTextField, vitaminDTextField, calciumTextField, cholesterolTextField, ironTextField]
         
         var saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveRecipe:")
@@ -80,15 +82,23 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
         self.title = "New Recipe"
     }
     
+    // MARK: - UIImagePicker Delegate method
+    
+    // Takes a picture using a UIImagePicker and returns a photo
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         let selectedImage : UIImage = image
         
         recipePicture!.image = selectedImage
         
+        // Dismissed the UIImagePicker view once the picture is taken
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    // MARK: - Capture Recipe Photo pressed
+    
+    // If the user's device has
     @IBAction func captureRecipePhoto(sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
@@ -100,8 +110,19 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             imagePicker.mediaTypes = [kUTTypeImage]
             imagePicker.allowsEditing = false
             
+            // Presents the UIImagePicker to allowe the user to take a photo.
             self.presentViewController(imagePicker, animated: true, completion: nil)
             
+        } else {
+            
+            var alertView = UIAlertView()
+            
+            alertView.title = "No Camera on Current Device!"
+            alertView.message = "Sorry, there is no camera available on your current device."
+            alertView.addButtonWithTitle("OK")
+            alertView.delegate = nil
+            
+            alertView.show()
         }
     }
     
@@ -128,7 +149,7 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
             
             recipeDataDictionary.setObject(ingredients, forKey: "ingredientLines")
             
-            // Save the image in the document directory
+            // Save the image in the document directory using the current time (to prevent overwriting)
             
             let currentTime = NSDate()
             
@@ -160,9 +181,9 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
                         // Subtracts 1 due to tag 0 being associated with all other text field
                         let tag = textField.tag - 1
                             
-                        let identifier = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(0) as String
+                        let identifier = (appDelegate.healthKitIdentifiersArray!.objectAtIndex(tag) as NSArray).objectAtIndex(0) as String
                         
-                        let unit = (appDelegate.healthKitIdentifiersArray.objectAtIndex(tag) as NSArray).objectAtIndex(1) as String
+                        let unit = (appDelegate.healthKitIdentifiersArray!.objectAtIndex(tag) as NSArray).objectAtIndex(1) as String
                             
                         nutritionDict.setObject([value.doubleValue, unit], forKey: identifier)
                     }
@@ -216,6 +237,8 @@ class NewRecipeViewController: UIViewController, UINavigationControllerDelegate,
         
         return true
     }
+    
+    // MARK: - Show Error Message
     
     func showErrorMessageFor(error: String) {
         
