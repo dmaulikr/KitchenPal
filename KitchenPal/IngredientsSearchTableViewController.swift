@@ -51,15 +51,16 @@ class IngredientsSearchTableViewController: UITableViewController {
         
         var apiURL: String = "http://api.yummly.com/v1/api/recipes?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6"
         
+        // Append required ingredients to the API query
         for ingredient in dataObjectPassed {
             
             apiURL += "&allowedIngredient[]=\(ingredient)"
         }
         
-        // Append any allergies to the search query
-        for allergy in appDelegate.allergies {
+        // Append any allergies to the API query
+        for allergy in appDelegate.allergies! {
             
-            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery.objectForKey(allergy)! as String
+            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery!.objectForKey(allergy)! as String
             
             allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
@@ -67,25 +68,30 @@ class IngredientsSearchTableViewController: UITableViewController {
             
         }
         
-        for cuisine in appDelegate.cuisines {
+        // Append any prefered cuisines to the API query
+        for cuisine in appDelegate.cuisines! {
             
-            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery.objectForKey(cuisine)! as String
+            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery!.objectForKey(cuisine)! as String
             
             cuisineQuery = cuisineQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(cuisineQuery)"
         }
         
+        // If the user has selected a required diet, append it to the API query
         if !appDelegate.diet.isEmpty {
             
-            var dietQuery = appDelegate.dict_Diet_DietQuery.objectForKey(appDelegate.diet)! as String
+            var dietQuery = appDelegate.dict_Diet_DietQuery!.objectForKey(appDelegate.diet)! as String
             
             dietQuery = dietQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedDiet[]=\(dietQuery)"
         }
         
+        // Require recipes with pictures and display a maximum of 20 recipe results
         apiURL += "&requirePictures=true&maxResult=20"
+        
+        // Fetches the JSON data resulting from the API call
         
         var url = NSURL(string: apiURL)
         
@@ -239,6 +245,7 @@ class IngredientsSearchTableViewController: UITableViewController {
             
             var controller: IngredientsRecipeViewController = segue.destinationViewController as IngredientsRecipeViewController
             
+            // Pass the Recipe ID to the downstream view controller
             controller.selectedRecipeID = recipeIDToPass
         }
     }

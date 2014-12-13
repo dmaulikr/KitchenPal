@@ -51,10 +51,11 @@ class IngredientsSearchViewController: UIViewController {
     }
     
     // MARK: - Validate text field data
+    
     func validateTextFields() -> Bool {
         
+        // Verifies that the text field contains alphanumeric characters
         let alphanumericCharacters = NSCharacterSet.alphanumericCharacterSet()
-        
         let rangeFound = ingredientsTextField.text.rangeOfCharacterFromSet(alphanumericCharacters)
         
         // If the ingredients text field is empty, display an alert and return false.
@@ -108,7 +109,6 @@ class IngredientsSearchViewController: UIViewController {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
 
         var touch: UITouch = event.allTouches()?.anyObject()? as UITouch
-        
         
         // If dishNameTextField is first responder and the user did not touch the dishNameTextField
         if ingredientsTextField.isFirstResponder() && touch.view != ingredientsTextField {

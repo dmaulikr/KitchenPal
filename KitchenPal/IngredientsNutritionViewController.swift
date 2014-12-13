@@ -25,6 +25,8 @@ class IngredientsNutritionViewController: UIViewController {
         
         var allNutritionDataAsText: String = ""
         
+        // Appends all of the nutrition estimates for this recipe to the string to be displayed in the text view
+        
         for nutrientDict in nutritionData {
             
             if nutrientDict.allKeys.count == 0 {
@@ -51,15 +53,17 @@ class IngredientsNutritionViewController: UIViewController {
         nutritionInfoTextView.text = allNutritionDataAsText
     }
     
+    // Log the nutrition estimates for this recipe in the user's Health app
     @IBAction func logInHealthAppPressed(sender: UIButton) {
         
         var unit: HKUnit?
         var nutritionType: HKQuantityType?
         var value: Double
         
+        // For each nutrition estimate, log in the user's Health app using this app's HealthStore object
         for nutrientInfo in nutritionData {
             
-            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
+            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier!.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
             
             if let quantityTypeForNutrient = quantityType {
                 

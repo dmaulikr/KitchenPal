@@ -56,7 +56,10 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Creates a GET Query for the recipe ID selected by the user
         var apiRequestUrl = "http://api.yummly.com/v1/api/recipe/\(selectedRecipeID)?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6"
+        
+        // Fetches the JSON Data resulting from the API query
         
         var url = NSURL(string: apiRequestUrl)
         
@@ -259,7 +262,7 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
         
         /*
         ------------------------------------
-        Sets the attribution text view, and the logo image view
+        Sets the attribution text view, and the logo image view (required by the Yummly API)
         ------------------------------------
         */
         
@@ -316,6 +319,8 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func viewPreparationStepsPressed(sender: UIButton) {
         
+        // Prepare to pass the recipe name and source url to the downstream view controller
+        
         dataObjectToPass[0] = recipeDataDictionary["name"] as String
         
         var sourceDict = recipeDataDictionary["source"] as Dictionary<String, String>
@@ -328,6 +333,8 @@ class IngredientsRecipeViewController: UIViewController, UIScrollViewDelegate {
     
     // Utilize HealthKit to add nutrition estimates to the Health app
     @IBAction func viewNutritionInfoPressed(sender: UIButton) {
+        
+        // Prepare to pass the nutrition estimate data to the downstream view controller
         
         var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
         
