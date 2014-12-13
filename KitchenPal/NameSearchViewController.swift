@@ -68,7 +68,7 @@ class NameSearchViewController: UIViewController {
             var alertView = UIAlertView()
             
             alertView.title = "No Dish Name Entered!"
-            alertView.message = "Please enter a Dish Name to search  and try again."
+            alertView.message = "Please enter a Dish Name to search and try again."
             alertView.delegate = nil
             alertView.addButtonWithTitle("OK")
             

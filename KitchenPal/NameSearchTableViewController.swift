@@ -57,35 +57,40 @@ class NameSearchTableViewController: UITableViewController {
             apiURL += "&maxTotalTimeInSeconds=\(maxPrepTimeParameter)"
         }
         
-        // Append any allergies to the search query
-        for allergy in appDelegate.allergies {
+        // Appends any allergies to the search query
+        for allergy in appDelegate.allergies! {
             
-            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery.objectForKey(allergy)! as String
+            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery!.objectForKey(allergy)! as String
             
             allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(allergyQuery)"
         }
         
-        for cuisine in appDelegate.cuisines {
+        // Appends any cuisine preferences to the search query
+        for cuisine in appDelegate.cuisines! {
             
-            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery.objectForKey(cuisine)! as String
+            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery!.objectForKey(cuisine)! as String
             
             cuisineQuery = cuisineQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(cuisineQuery)"
         }
         
+        // Appends the user's diet preference to the search query
         if !appDelegate.diet.isEmpty {
             
-            var dietQuery = appDelegate.dict_Diet_DietQuery.objectForKey(appDelegate.diet)! as String
+            var dietQuery = appDelegate.dict_Diet_DietQuery!.objectForKey(appDelegate.diet)! as String
             
             dietQuery = dietQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedDiet[]=\(dietQuery)"
         }
         
+        // Requires pictures and sets the max results to 20.
         apiURL += "&requirePictures=true&maxResult=20"
+        
+        // Fetches the json data matching the search query from the Yummly API
         
         var url = NSURL(string: apiURL)
         

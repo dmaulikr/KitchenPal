@@ -55,6 +55,7 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // The GET Recipe request for the selected recipe
         var apiRequestUrl = "http://api.yummly.com/v1/api/recipe/\(selectedRecipeID)?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6"
         
         var url = NSURL(string: apiRequestUrl)
@@ -125,6 +126,7 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
                 
             } else {
                 
+                // Unsuccessfully retrieved
                 showErrorMessageFor("Error occurred while retrieving recipe image data!")
             }
         }
@@ -257,7 +259,7 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
         
         /*
         ------------------------------------
-        Sets the attribution text view, and the logo image view
+        Sets the attribution text view, and the logo image view (Required by the Yummly API)
         ------------------------------------
         */
         
@@ -314,6 +316,8 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func viewPreparationStepsPressed(sender: UIButton) {
         
+        // Prepares to pass the recipe name and source website URL to the downstream view controller.
+        
         dataObjectToPass[0] = recipeDataDictionary["name"] as String
         
         var sourceDict = recipeDataDictionary["source"] as Dictionary<String, String>
@@ -326,6 +330,8 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
     
     // Utilize HealthKit to add nutrition estimates to the Health app
     @IBAction func logInHealthAppPressed(sender: UIButton) {
+        
+        // Passes the nutrtion estimates for this recipe to the downstream view controller.
         
         var nutritionData = recipeDataDictionary["nutritionEstimates"] as NSArray
         
@@ -356,6 +362,7 @@ class NameRecipeViewController: UIViewController, UIScrollViewDelegate {
             
             var controller: NameNutritionViewController = segue.destinationViewController as NameNutritionViewController
             
+            // Pass the nutrtion estimates downstream.
             controller.nutritionData = nutritionData
         }
     }

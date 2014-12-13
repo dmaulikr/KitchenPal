@@ -10,13 +10,16 @@ import UIKit
 
 class NameWebViewController: UIViewController, UIWebViewDelegate {
 
+    // Data passed from the upstream view controller.
     var dataObjectPassed = ["Dish Name", "Preparation Steps URL"]
     
+    // Object reference to this view's UIWebView.
     @IBOutlet var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Sets the title of this view to be the dish name
         self.title = dataObjectPassed[0]
         
         var url = NSURL(string: dataObjectPassed[1])
@@ -38,11 +41,7 @@ class NameWebViewController: UIViewController, UIWebViewDelegate {
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         
-        /*
-        Ignore this error if the page is instantly redirected via javascript or in another way.
-        NSURLErrorCancelled is returned when an asynchronous load is cancelled, which happens
-        when the page is instantly redirected via javascript or in another way.
-        */
+        // Ignore this error if it is cancelled, and the page is successfully loaded.
         if error.code == NSURLErrorCancelled {
             return
         }

@@ -11,8 +11,10 @@ import HealthKit
 
 class NameNutritionViewController: UIViewController {
 
+    // Object reference to the AppDelegate
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
+    // Object reference to a text view displaying the nutrtion data for this recipe.
     @IBOutlet var nutritionInfoTextView: UITextView!
     
     // The nutrition information for this dish represented as an array of dictionaries (for each nutrient)
@@ -24,6 +26,8 @@ class NameNutritionViewController: UIViewController {
         self.title = "Nutrition Information"
         
         var allNutritionDataAsText: String = ""
+        
+        // Append all of the nutrition estimates to a string to be displayed in the text view
         
         for nutrientDict in nutritionData {
             
@@ -51,15 +55,18 @@ class NameNutritionViewController: UIViewController {
         nutritionInfoTextView.text = allNutritionDataAsText
     }
     
+    // Log the nutrition estimates in the user's Health app
     @IBAction func logInHealthAppPressed(sender: UIButton) {
         
         var unit: HKUnit?
         var nutritionType: HKQuantityType?
         var value: Double
         
+        // For each nutrition estimate, log in the Health app using this application's HealthStore object
+        
         for nutrientInfo in nutritionData {
             
-            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
+            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier!.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
             
             if let quantityTypeForNutrient = quantityType {
                 
