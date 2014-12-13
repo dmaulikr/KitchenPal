@@ -10,6 +10,7 @@ import UIKit
 
 class PreferencesViewController: UIViewController {
     
+    // Left and right arrows used for the ScrollView to indicate more contents exists
     @IBOutlet var leftArrowWhite: UIImageView!
     @IBOutlet var rightArrowWhite: UIImageView!
     
@@ -39,13 +40,13 @@ class PreferencesViewController: UIViewController {
         // Instantiate a mutable array to hold the buttons (diet selections)
         var listOfMenuButtons = [UIButton]()
         
-        for var i = 0; i < appDelegate.allDiets.count; i++ {
+        for var i = 0; i < appDelegate.allDiets!.count; i++ {
             
             // Instantiate a button to be placed within the horizontally scrollable menu
             var scrollMenuButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
             
             // Obtain the title (i.e., diet name) to be displayed on the button.
-            var buttonTitle = appDelegate.allDiets[i] as String
+            var buttonTitle = appDelegate.allDiets![i] as String
             
             var buttonTitleFont = UIFont(name: "Helvetica-Bold", size: 17.0)
             
@@ -101,9 +102,10 @@ class PreferencesViewController: UIViewController {
         // Sets the default diet to the stored diet.
         var defaultIndex = 0
         
-        for var i = 0; i < appDelegate.allDiets.count; i++ {
+        // Finds the currently selected diet in the allDiets array
+        for var i = 0; i < appDelegate.allDiets!.count; i++ {
             
-            if appDelegate.allDiets.objectAtIndex(i) as NSString == appDelegate.diet {
+            if appDelegate.allDiets!.objectAtIndex(i) as NSString == appDelegate.diet {
                 
                 defaultIndex = i
             }
@@ -115,7 +117,7 @@ class PreferencesViewController: UIViewController {
         
         previousButton = defaultButton
         
-        appDelegate.diet = appDelegate.allDiets.objectAtIndex(0) as String
+        appDelegate.diet = appDelegate.allDiets!.objectAtIndex(0) as String
     }
     
     // MARK: - Method to Handle Button Tap
@@ -137,11 +139,13 @@ class PreferencesViewController: UIViewController {
         appDelegate.diet = selectedButton.titleForState(UIControlState.Normal)!
     }
     
+    // Show the Cuisine Preferences TableViewController
     @IBAction func cuisineSelectionPressed(sender: UIButton) {
         
         performSegueWithIdentifier("CuisineSelection", sender: self)
     }
     
+    // Show the Allergy TableViewController
     @IBAction func allergySelectionPressed(sender: UIButton) {
         
         performSegueWithIdentifier("AllergySelection", sender: self)

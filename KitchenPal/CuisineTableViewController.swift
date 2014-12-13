@@ -35,7 +35,7 @@ class CuisineTableViewController: UITableViewController {
     // Returns the number of rows (or already selected cuisines)
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return appDelegate.cuisines.count
+        return appDelegate.cuisines!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -43,7 +43,7 @@ class CuisineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CuisineCell", forIndexPath: indexPath) as UITableViewCell
         
         // Configure the cell...
-        cell.textLabel!.text = appDelegate.cuisines[indexPath.row] as? String
+        cell.textLabel!.text = appDelegate.cuisines![indexPath.row] as? String
         
         return cell
     }
@@ -59,7 +59,7 @@ class CuisineTableViewController: UITableViewController {
         
         if editingStyle == .Delete { // Delete the cuisine.
             
-            appDelegate.cuisines.removeObjectAtIndex(indexPath.row)
+            appDelegate.cuisines!.removeObjectAtIndex(indexPath.row)
         }
         self.tableView.reloadData()
     }
@@ -76,7 +76,7 @@ class CuisineTableViewController: UITableViewController {
                 
                 var newCuisineName: String = controller.cuisineToAdd
                 
-                appDelegate.cuisines.addObject(newCuisineName)
+                appDelegate.cuisines!.addObject(newCuisineName)
                 
                 self.tableView.reloadData()
             }
@@ -111,7 +111,7 @@ class CuisineTableViewController: UITableViewController {
     func noCuisinesRemaining() -> Bool {
         
         // If the count of the cuisines and allCuisines array are equivalent, no cuisines remain.
-        return appDelegate.cuisines.count == appDelegate.allCuisines.count
+        return appDelegate.cuisines!.count == appDelegate.allCuisines!.count
     }
     
 }

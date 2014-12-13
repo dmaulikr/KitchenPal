@@ -33,16 +33,18 @@ class AddAllergyViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         allergiesToDisplay = [String]()
         
-        var allAllergiesSet: NSMutableSet = NSMutableSet(array: appDelegate.allAllergies)
-        var allergiesSet: NSMutableSet = NSMutableSet(array: appDelegate.allergies)
+        // Creates sets for the currently selected allergies and all allergies
+        var allAllergiesSet: NSMutableSet = NSMutableSet(array: appDelegate.allAllergies!)
+        var allergiesSet: NSMutableSet = NSMutableSet(array: appDelegate.allergies!)
         
+        // Intersects the sets to find which allergies the user has NOT selected
         allAllergiesSet.intersectSet(allergiesSet)
         
-        for var i = 0; i < appDelegate.allAllergies.count; i++ {
+        for var i = 0; i < appDelegate.allAllergies!.count; i++ {
             
-            if !allAllergiesSet.containsObject(appDelegate.allAllergies.objectAtIndex(i)) {
+            if !allAllergiesSet.containsObject(appDelegate.allAllergies!.objectAtIndex(i)) {
                 
-                allergiesToDisplay.append(appDelegate.allAllergies.objectAtIndex(i) as String)
+                allergiesToDisplay.append(appDelegate.allAllergies!.objectAtIndex(i) as String)
             }
         }
         

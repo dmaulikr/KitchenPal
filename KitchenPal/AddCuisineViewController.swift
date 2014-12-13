@@ -34,16 +34,17 @@ class AddCuisineViewController: UIViewController {
         
         cuisinesToDisplay = [String]()
         
-        var allCuisinesSet: NSMutableSet = NSMutableSet(array: appDelegate.allCuisines)
-        var cuisinesSet: NSMutableSet = NSMutableSet(array: appDelegate.cuisines)
+        // Sets for allCuisines and the currently selected cuisines used to differentiate between the two
+        var allCuisinesSet: NSMutableSet = NSMutableSet(array: appDelegate.allCuisines!)
+        var cuisinesSet: NSMutableSet = NSMutableSet(array: appDelegate.cuisines!)
         
         allCuisinesSet.intersectSet(cuisinesSet)
         
-        for var i = 0; i < appDelegate.allCuisines.count; i++ {
+        for var i = 0; i < appDelegate.allCuisines!.count; i++ {
             
-            if !allCuisinesSet.containsObject(appDelegate.allCuisines.objectAtIndex(i)) {
+            if !allCuisinesSet.containsObject(appDelegate.allCuisines!.objectAtIndex(i)) {
                 
-                cuisinesToDisplay.append(appDelegate.allCuisines.objectAtIndex(i) as String)
+                cuisinesToDisplay.append(appDelegate.allCuisines!.objectAtIndex(i) as String)
             }
         }
         

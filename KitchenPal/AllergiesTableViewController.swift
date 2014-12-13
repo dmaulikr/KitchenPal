@@ -13,7 +13,6 @@ class AllergiesTableViewController: UITableViewController {
     // Object reference to this View Controller's TableView object
     @IBOutlet var allergiesTableView: UITableView!
     
-    
     // Object reference to the AppDelegate
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
@@ -55,7 +54,7 @@ class AllergiesTableViewController: UITableViewController {
     func noAllergiesRemaining() -> Bool {
         
         // If the count of the allergies and allAllergies array are equivalent, no allergies remain.
-        return appDelegate.allergies.count == appDelegate.allAllergies.count
+        return appDelegate.allergies!.count == appDelegate.allAllergies!.count
     }
 
     // MARK: - Table view data source
@@ -69,7 +68,7 @@ class AllergiesTableViewController: UITableViewController {
     // Returns the number of rows (or already selected food allergies)
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return appDelegate.allergies.count
+        return appDelegate.allergies!.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -77,7 +76,7 @@ class AllergiesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("AllergyCell", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
-        cell.textLabel!.text = appDelegate.allergies[indexPath.row] as? String
+        cell.textLabel!.text = appDelegate.allergies![indexPath.row] as? String
 
         return cell
     }
@@ -93,7 +92,8 @@ class AllergiesTableViewController: UITableViewController {
         
         if editingStyle == .Delete { // Delete the allergy.
             
-            appDelegate.allergies.removeObjectAtIndex(indexPath.row)
+            // Deletes the allergy from the user's set allergies
+            appDelegate.allergies!.removeObjectAtIndex(indexPath.row)
         }
         
         allergiesTableView.reloadData()
@@ -111,7 +111,8 @@ class AllergiesTableViewController: UITableViewController {
                 
                 var newAllergyName: String = controller.allergyToAdd
                 
-                appDelegate.allergies.addObject(newAllergyName)
+                // Add the passed allergy to the list user's allergies
+                appDelegate.allergies!.addObject(newAllergyName)
                 
                 allergiesTableView.reloadData()
             }
