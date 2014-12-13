@@ -47,6 +47,7 @@ class FlavorSearchTableViewController: UITableViewController {
         
         var apiURL: String = "http://api.yummly.com/v1/api/recipes?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6"
         
+        // Append the flavor preferences to the API query
         for key in dataObjectPassed.keys {
             
             // Get the min and max flavor values for the current flavor.
@@ -56,35 +57,40 @@ class FlavorSearchTableViewController: UITableViewController {
             apiURL += "&flavor.\(key).min=\(minMaxValueForFlavor[0])&flavor.\(key).max=\(minMaxValueForFlavor[1])"
         }
         
-        // Append any allergies to the search query
-        for allergy in appDelegate.allergies {
+        // Append any allergies to the API query
+        for allergy in appDelegate.allergies! {
             
-            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery.objectForKey(allergy)! as String
+            var allergyQuery = appDelegate.dict_Allergy_AllergyQuery!.objectForKey(allergy)! as String
             
             allergyQuery = allergyQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(allergyQuery)"
         }
         
-        for cuisine in appDelegate.cuisines {
+        // Append any cuisine preferences to the API query
+        for cuisine in appDelegate.cuisines! {
             
-            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery.objectForKey(cuisine)! as String
+            var cuisineQuery = appDelegate.dict_Cuisine_CuisineQuery!.objectForKey(cuisine)! as String
             
             cuisineQuery = cuisineQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedAllergy[]=\(cuisineQuery)"
         }
         
+        // Append the user's diet preference to the API Query
         if !appDelegate.diet.isEmpty {
             
-            var dietQuery = appDelegate.dict_Diet_DietQuery.objectForKey(appDelegate.diet)! as String
+            var dietQuery = appDelegate.dict_Diet_DietQuery!.objectForKey(appDelegate.diet)! as String
             
             dietQuery = dietQuery.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             
             apiURL += "&allowedDiet[]=\(dietQuery)"
         }
         
+        // Require pictures and set the max results returned from the query to be 20
         apiURL += "&requirePictures=true&maxResult=20"
+        
+        // Fetch the JSON data resulting from the API query
         
         var url = NSURL(string: apiURL)
         

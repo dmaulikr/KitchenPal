@@ -54,6 +54,7 @@ class FlavorRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // The GET API query for the selected recipe
         var apiRequestUrl = "http://api.yummly.com/v1/api/recipe/\(selectedRecipeID)?_app_id=22abf91e&_app_key=31a068acb6a8df2e9cd4cd70e41774e6"
         
         var url = NSURL(string: apiRequestUrl)
@@ -86,15 +87,15 @@ class FlavorRecipeViewController: UIViewController {
         
         var recipeImagesArray = recipeDataDictionary["images"] as Array<AnyObject>
         
+        // Fetch an image for this recipe if one exists
+        
         if !recipeImagesArray.isEmpty {
-            
             
             var recipeImages = recipeImagesArray[0] as Dictionary<String, AnyObject>
             
             var recipeImageURL: String?
             
             var recipesPresent = recipeImages.keys
-            
             
             // Use the medium image if present, followed by the large, and if neither exist then use the
             // small image.
@@ -108,7 +109,6 @@ class FlavorRecipeViewController: UIViewController {
                 
                 recipeImageURL = recipeImages["hostedSmallUrl"] as? String
             }
-            
             
             var url = NSURL(string: recipeImageURL!)
             
@@ -175,7 +175,6 @@ class FlavorRecipeViewController: UIViewController {
         */
         
         var recipeIngredients = recipeDataDictionary["ingredientLines"] as Array<String>
-        
         
         ingredientsListTextView.text = "\n".join(recipeIngredients)
         

@@ -10,6 +10,7 @@ import UIKit
 
 class FlavorWebViewController: UIViewController {
 
+    // The data passed from the upstream view controller (dish name and the URL for prep steps)
     var dataObjectPassed = ["Dish Name", "Preparation Steps URL"]
     
     @IBOutlet var webView: UIWebView!
@@ -38,11 +39,7 @@ class FlavorWebViewController: UIViewController {
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         
-        /*
-        Ignore this error if the page is instantly redirected via javascript or in another way.
-        NSURLErrorCancelled is returned when an asynchronous load is cancelled, which happens
-        when the page is instantly redirected via javascript or in another way.
-        */
+        // If the error is cancelled, ignore it
         if error.code == NSURLErrorCancelled {
             return
         }

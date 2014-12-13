@@ -25,6 +25,7 @@ class FlavorNutritionViewController: UIViewController {
         
         var allNutritionDataAsText: String = ""
         
+        // Append all of the nutriton estimates for this recipe to a string to be displayed in the text view
         for nutrientDict in nutritionData {
             
             if nutrientDict.allKeys.count == 0 {
@@ -57,9 +58,10 @@ class FlavorNutritionViewController: UIViewController {
         var nutritionType: HKQuantityType?
         var value: Double
         
+        // Stores all of the nutrition estimates in the user's health app using this applications Health Store.
         for nutrientInfo in nutritionData {
             
-            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
+            var quantityType: String? = appDelegate.dict_NutritionAttribute_HealthKitIdentifier!.objectForKey(nutrientInfo.objectForKey("attribute")!) as String?
             
             if let quantityTypeForNutrient = quantityType {
                 

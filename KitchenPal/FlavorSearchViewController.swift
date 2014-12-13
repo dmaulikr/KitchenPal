@@ -33,13 +33,16 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var minMeatyLabel: UILabel!
     @IBOutlet var maxMeatyLabel: UILabel!
     
-    // Create an array of min labels and an array of max labels
+    // Array of min labels for each slider
     var minLabels = [UILabel]()
     
+    // Array of max labels for each slider
     var maxLabels = [UILabel]()
     
+    // Array of slider labels (displaying current slider values)
     var sliderLabels = [UILabel]()
     
+    // Array of the names of each flavor (in the same order that they are displayed in the view controller)
     var flavorNames = [String]()
     
     // An array of ingredients to be passed to the downstream view controller
@@ -69,6 +72,7 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Button Pressed Methods
     
+    // Sets the minimum flavor value for the associated flavor and slider
     @IBAction func setMinButtonPressed(sender: UIButton) {
         
         var buttonTag: Int = sender.tag
@@ -83,6 +87,7 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    // Sets the maxiumum flavor value for the associated flavor and slider
     @IBAction func setMaxButtonPressed(sender: UIButton) {
         
         var buttonTag: Int = sender.tag
@@ -97,6 +102,7 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    // Resets the min and max labels for the corresponding flavor
     @IBAction func clearButtonPressed(sender: UIButton) {
         
         var buttonTag: Int = sender.tag
@@ -121,6 +127,8 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Search Button Pressed
     
     @IBAction func searchButtonPressed(sender: UIButton) {
+        
+        // Prepare the flavor values to be passed downstream.
         
         for var i = 0; i < flavorNames.count; i++ {
             
@@ -151,6 +159,7 @@ class FlavorSearchViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Label Data Extraction
     
+    // Extracts the numerical value from a label of the format "Text: <Number Here>"
     func getValueFromLabel(label: UILabel) -> Float {
         
         var labelText: String = label.text!
