@@ -23,6 +23,8 @@ class FlavorNutritionViewController: UIViewController {
         
         self.title = "Nutrition Information"
         
+        nutritionInfoTextView.font = UIFont(name: "Helvetica", size: 17.0)
+        
         var allNutritionDataAsText: String = ""
         
         // Append all of the nutriton estimates for this recipe to a string to be displayed in the text view

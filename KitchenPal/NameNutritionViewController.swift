@@ -24,6 +24,7 @@ class NameNutritionViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Nutrition Information"
+        nutritionInfoTextView.font = UIFont(name: "Helvetica", size: 17.0)
         
         var allNutritionDataAsText: String = ""
         
