@@ -77,10 +77,24 @@ class ViewMyRecipeViewController: UIViewController {
         yieldLabel.text = "Servings: \(yield)"
         
         // Set the recipe image
-        var recipeImagePath = documentDirectoryPath + "/" + (recipeData?.objectForKey("image") as String)
-        var recipeImageData = NSData(contentsOfFile: recipeImagePath)
-        var recipeImage = UIImage(data: recipeImageData!)
-        recipeImageView.image = recipeImage!.normalizedImage()
+        
+        let imageName = recipeData?.objectForKey("image") as String
+        
+        // If the image is not user-taken, and this is a default recipe
+        if imageName.rangeOfString("KitchenPal") == nil {
+            
+            var imagePath = "\(imageName).jpg"
+            let image = UIImage(named: imagePath)
+            recipeImageView.image = image
+            
+        } else {
+            // This image is user-taken, and stored in the document directory
+            
+            var recipeImagePath = documentDirectoryPath + "/\(imageName)"
+            var recipeImageData = NSData(contentsOfFile: recipeImagePath)
+            var recipeImage = UIImage(data: recipeImageData!)
+            recipeImageView.image = recipeImage!.normalizedImage()
+        }
         
         // Set the ingredients list
         var ingredientsArray = recipeData!.objectForKey("ingredientLines") as [String]

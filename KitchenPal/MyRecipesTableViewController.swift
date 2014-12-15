@@ -59,14 +59,27 @@ class MyRecipesTableViewController: UITableViewController {
         
         var imageName = recipeData.objectForKey("image") as String
         
-        let imageAbsoluteFilePath = documentDirectoryPath + "/\(imageName)"
-        
-        var recipeImageData = NSData(contentsOfFile: imageAbsoluteFilePath)
-        
-        if let imageDataForRecipe = recipeImageData {
+        // If the image is not user-taken, and this is a default recipe
+        if imageName.rangeOfString("KitchenPal") == nil {
             
-            let image = UIImage(data: imageDataForRecipe)
-            cell.recipeImageView.image = image!.normalizedImage()
+            var imagePath = "\(imageName).jpg"
+            let image = UIImage(named: imagePath)
+            cell.recipeImageView.image = image
+            
+        } else {
+            
+            // This image is user-taken, and stored in the document directory
+            
+            let imageAbsoluteFilePath = documentDirectoryPath + "/\(imageName)"
+            
+            var recipeImageData = NSData(contentsOfFile: imageAbsoluteFilePath)
+            
+            if let imageDataForRecipe = recipeImageData {
+                
+                let image = UIImage(data: imageDataForRecipe)
+                cell.recipeImageView.image = image!.normalizedImage()
+            }
+            
         }
         
         let recipeName = recipeData.objectForKey("name") as String
@@ -104,15 +117,20 @@ class MyRecipesTableViewController: UITableViewController {
             
             var imageFilePathExtension = recipeData.objectForKey("image") as String
             
-            let imageFilePath = documentDirectoryPath + "/\(imageFilePathExtension)"
-            
-            let fileManager = NSFileManager.defaultManager()
-            
-            let didSucceed = fileManager.removeItemAtPath(imageFilePath, error: &fileRemoveError)
-            
-            if (!didSucceed) {
+            // If the image is saved in the Document Directory, delete it.
+            if imageFilePathExtension.rangeOfString("KitchenPal") != nil {
                 
-                showErrorMessage("Error in deleting file: \(fileRemoveError!.localizedDescription)")
+                let imageFilePath = documentDirectoryPath + "/\(imageFilePathExtension)"
+                
+                let fileManager = NSFileManager.defaultManager()
+                
+                let didSucceed = fileManager.removeItemAtPath(imageFilePath, error: &fileRemoveError)
+                
+                if (!didSucceed) {
+                    
+                    showErrorMessage("Error in deleting file: \(fileRemoveError!.localizedDescription)")
+                }
+                
             }
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

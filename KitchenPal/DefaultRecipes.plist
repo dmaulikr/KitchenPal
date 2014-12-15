@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<array>
+	<dict>
+		<key>flavors</key>
+		<dict>
+			<key>Salty</key>
+			<real>0.85</real>
+			<key>Savory</key>
+			<real>0.85</real>
+			<key>Sour</key>
+			<real>0.15</real>
+			<key>Bitter</key>
+			<real>0.85</real>
+			<key>Sweet</key>
+			<real>0.1</real>
+			<key>Spicy</key>
+			<integer>0</integer>
+		</dict>
+		<key>nutrition</key>
+		<dict>
+			<key>HKQuantityTypeIdentifierDietaryEnergyConsumed</key>
+			<array>
+				<integer>350</integer>
+				<string>kcal</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryFatTotal</key>
+			<array>
+				<real>18</real>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryFatSaturated</key>
+			<array>
+				<integer>9</integer>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryProtein</key>
+			<array>
+				<integer>42</integer>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryCarbohydrates</key>
+			<array>
+				<integer>5</integer>
+				<string>g</string>
+			</array>
+		</dict>
+		<key>preparationSteps</key>
+		<string>1. Place the chicken breasts in a baking dish that has been sprayed with cooking spray. Mix together sour cream, garlic, lemon zest, salt, pepper, chives, and parsley in a small bowl.  2. Mix the panko crumbs into the sour cream mixture.  3.Spread the sour cream over the top of the chicken breasts.  4.Cover with Parmesan cheese.  5.Bake in a preheated 400 degree oven for 20 to 25 minutes, or until chicken is cooked through, and the cheese is golden brown.</string>
+		<key>image</key>
+		<string>SourCreamChicken</string>
+		<key>name</key>
+		<string>Sour Cream Chicken</string>
+		<key>totalTime</key>
+		<string>40</string>
+		<key>yield</key>
+		<string>4</string>
+		<key>ingredientLines</key>
+		<array>
+			<string>6 boneless skinless chicken breasts</string>
+			<string>1 cup sour cream</string>
+			<string>1 clove minced garlic</string>
+			<string>2 tsps lemon zest</string>
+			<string>2 tsps salt (Borsari, or 2 teaspoons salt and 1 teaspoon pepper)</string>
+			<string>1 tbsp chives (chopped)</string>
+			<string>2 tbsps flat leaf parsley (chopped)</string>
+			<string>1/2 cup panko breadcrumbs</string>
+			<string>1/2 cup parmesan cheese</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chicken &amp; Asparagus Penne</string>
+		<key>yield</key>
+		<string>6</string>
+		<key>image</key>
+		<string>ChickenAsparagusPenne</string>
+		<key>totalTime</key>
+		<string>20</string>
+		<key>preparationSteps</key>
+		<string>1. Add all ingredients into a 9 x13 pan and stir to combine. 2. Top with Cheese and Broil for 5 minutes or until cheese is golden.</string>
+		<key>flavors</key>
+		<dict>
+			<key>Salty</key>
+			<real>0.2</real>
+			<key>Savory</key>
+			<real>0.9</real>
+			<key>Sour</key>
+			<real>0.15</real>
+			<key>Bitter</key>
+			<real>0.5</real>
+			<key>Sweet</key>
+			<real>0.15</real>
+			<key>Spicy</key>
+			<integer>0</integer>
+		</dict>
+		<key>nutrition</key>
+		<dict>
+			<key>HKQuantityTypeIdentifierDietaryEnergyConsumed</key>
+			<array>
+				<integer>420</integer>
+				<string>kcal</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryFatTotal</key>
+			<array>
+				<integer>15</integer>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryFatSaturated</key>
+			<array>
+				<real>3.5</real>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryProtein</key>
+			<array>
+				<integer>28</integer>
+				<string>g</string>
+			</array>
+			<key>HKQuantityTypeIdentifierDietaryCarbohydrates</key>
+			<array>
+				<integer>46</integer>
+				<string>g</string>
+			</array>
+		</dict>
+		<key>ingredientLines</key>
+		<array>
+			<string>1 lb asparagus (Steamed)</string>
+			<string>12 ozs penne (Smart Taste, Cooked)</string>
+			<string>1/4 cup olive oil</string>
+			<string>1 lb chicken breasts (Cubed and Cooked)</string>
+			<string>1/2 cup parmesan cheese (Shredded)</string>
+		</array>
+	</dict>
+</array>
 </plist>

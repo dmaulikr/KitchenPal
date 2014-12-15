@@ -114,7 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             
-            self.myRecipes = NSMutableArray()
+            var defaultRecipesFilePathInMainBundle = NSBundle.mainBundle().pathForResource("DefaultRecipes", ofType: "plist")
+            
+            self.myRecipes = NSMutableArray(contentsOfFile: defaultRecipesFilePathInMainBundle!)
         }
         
         // Obtain the file path to the Diets plist file in the mainBundle (project folder)

@@ -15,6 +15,7 @@
 		31484E4A1A2E3EF7006CFA34 /* AddCuisineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31484E491A2E3EF7006CFA34 /* AddCuisineViewController.swift */; };
 		31484E4C1A2E3F48006CFA34 /* AllergiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31484E4B1A2E3F48006CFA34 /* AllergiesTableViewController.swift */; };
 		31484E4E1A2E3F5D006CFA34 /* AddAllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31484E4D1A2E3F5D006CFA34 /* AddAllergyViewController.swift */; };
+		31708D881A3F98570053C751 /* DefaultRecipes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31708D871A3F98570053C751 /* DefaultRecipes.plist */; };
 		3175DB8A1A23B4750084176F /* NameSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175DB891A23B4750084176F /* NameSearchViewController.swift */; };
 		3175DB8C1A23B4940084176F /* NameSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175DB8B1A23B4940084176F /* NameSearchTableViewController.swift */; };
 		3175DB8E1A23B4C50084176F /* NameRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175DB8D1A23B4C50084176F /* NameRecipeViewController.swift */; };
@@ -65,6 +66,7 @@
 		31484E491A2E3EF7006CFA34 /* AddCuisineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCuisineViewController.swift; sourceTree = "<group>"; };
 		31484E4B1A2E3F48006CFA34 /* AllergiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergiesTableViewController.swift; sourceTree = "<group>"; };
 		31484E4D1A2E3F5D006CFA34 /* AddAllergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAllergyViewController.swift; sourceTree = "<group>"; };
+		31708D871A3F98570053C751 /* DefaultRecipes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultRecipes.plist; sourceTree = "<group>"; };
 		3175DB891A23B4750084176F /* NameSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSearchViewController.swift; sourceTree = "<group>"; };
 		3175DB8B1A23B4940084176F /* NameSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSearchTableViewController.swift; sourceTree = "<group>"; };
 		3175DB8D1A23B4C50084176F /* NameRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameRecipeViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				31431E461A2E62830038D527 /* Allergies.plist */,
 				318C94E91A30EE69009E57C7 /* HKIdentifiers.plist */,
 				319F361D1A336B3C004F6F84 /* HKIdentifierList.plist */,
+				31708D871A3F98570053C751 /* DefaultRecipes.plist */,
 			);
 			name = "pList Files";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			files = (
 				31D36E4E1A0FC15800364852 /* Main.storyboard in Resources */,
 				31431E451A2E5FF50038D527 /* Cuisines.plist in Resources */,
+				31708D881A3F98570053C751 /* DefaultRecipes.plist in Resources */,
 				319F361E1A336B3C004F6F84 /* HKIdentifierList.plist in Resources */,
 				318C94EA1A30EE69009E57C7 /* HKIdentifiers.plist in Resources */,
 				31D36E531A0FC15800364852 /* LaunchScreen.xib in Resources */,
